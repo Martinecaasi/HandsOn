@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up As An Organizer</title>
+  <link rel="stylesheet" href="../Css/style.css" />
+  <link rel="stylesheet" href="../Css/signUpAsOrg.css" />
+</head>
+<body>
+  <div class="mobile-frame organizer-signup">
+
+    <a href="signupAs.html" class="back-arrow"><img src="../Images/arrow.svg" alt="Back Arrow"></a>
+    <h1 class="title">Sign Up</h1>
+
+    <form class="signup-form" enctype="multipart/form-data">
+
+      <div class="profile-upload">
+        <label for="orgImageInput" class="avatar-wrapper">
+          <img id="orgAvatarPreview" src="../Images/profile.svg" alt="Organization Profile" />
+        </label>
+        <input type="file" id="orgImageInput" accept="image/png, image/jpeg" hidden />
+      </div>
+
+      <input type="text" placeholder="Organization’s Name" required />
+      <input type="text" placeholder="Speciality" required />
+      <input type="tel" placeholder="Phone Number" required />
+      <input type="email" placeholder="Email" required />
+      <input type="number" placeholder="How Many Hands Do You Need?" min="1" max="100" required />
+      <textarea placeholder="About The Organization" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <img src="../Images/handslogo/black.svg" alt="HandsOn logo" class="logo-bottom" />
+
+  </div>
+
+  <script>
+      const input = document.getElementById('orgImageInput');
+      const preview = document.getElementById('orgAvatarPreview');
+
+      input.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+            document.addEventListener("DOMContentLoaded", function () {
+      const textarea = document.querySelector(".signup-form textarea");
+
+      textarea.addEventListener("input", () => {
+      textarea.style.height = "auto"; 
+      textarea.style.height = textarea.scrollHeight + "px"; 
+      });
+      });
+
+  </script>
+</body>
+</html>

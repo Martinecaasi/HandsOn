@@ -1,0 +1,112 @@
+.mobile-frame.volunteer-signup {
+  width: 100%;
+  max-width: 480px;
+  min-width: 320px;
+  min-height: 100vh;
+  background:white;
+  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
+}
+.volunteer-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 45px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: black;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.profile-upload {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+.avatar-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  cursor: pointer;
+}
+
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-form input,
+.signup-form textarea {
+  padding: 14px;
+  border: none;
+  border-radius: 25px;
+  background-color: #C1E5FF;
+  font-size: 14px;
+  font-weight: 600;
+  width: 320px;
+  height: 52px;
+  font-family: 'Poopins', sans-serif;
+
+}
+
+.signup-form textarea {
+  resize: none;
+  min-height: 60px;
+  max-height: 200px; 
+  line-height: 1.4;
+}
+
+.signup-form button {
+  padding: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #6BB1E4;
+  border: none;
+  border-radius: 999px;
+  color: black;
+  margin-top: 10px;
+  width: 194px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.logo-bottom {
+  width: 50px;
+  margin: 30px auto 0;
+}

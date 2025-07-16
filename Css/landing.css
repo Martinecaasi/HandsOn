@@ -1,0 +1,42 @@
+
+.landing-title {
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px 0;
+  color: #000;
+}
+
+.landing-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  align-items: center;
+
+}
+
+.btn-blue {
+  display: block;
+  background-color: #6BB1E4;
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 0;
+  border-radius: 999px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 361.98px;
+  height: 71px;
+
+}
+
+.landing-logo{
+  width: 150px;
+  height: 150px;
+  margin-bottom: 30px;
+
+}
