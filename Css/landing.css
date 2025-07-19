@@ -1,9 +1,30 @@
+.mobile-frame.landing {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px 20px 110px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 150px;
+}
+
+.landing-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 30px;
+}
 
 .landing-title {
-  font-size: 45px;
+  font-size: 38px;
   font-weight: bold;
-  text-align: center;
-  margin: 30px 0;
+  margin: 20px 0 40px;
+  line-height: 1.2;
   color: #000;
 }
 
@@ -13,9 +34,6 @@
   gap: 20px;
   width: 100%;
   max-width: 320px;
-  margin: 0 auto;
-  align-items: center;
-
 }
 
 .btn-blue {
@@ -23,20 +41,11 @@
   background-color: #6BB1E4;
   color: #000;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   text-decoration: none;
   padding: 15px 0;
   border-radius: 999px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 361.98px;
-  height: 71px;
-
-}
-
-.landing-logo{
-  width: 150px;
-  height: 150px;
-  margin-bottom: 30px;
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
