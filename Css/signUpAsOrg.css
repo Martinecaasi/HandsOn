@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 480px;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 130vh;
   background: white;
   padding: 20px;
   margin: 0 auto;
@@ -91,6 +91,7 @@
 }
 
 .signup-form input,
+.signup-form select,
 .signup-form textarea {
   padding: 14px;
   border: none;
@@ -100,7 +101,6 @@
   font-weight: 600;
   width: 320px;
   height: 52px;
-  font-family: 'Poppins', sans-serif;
 }
 
 .signup-form textarea {

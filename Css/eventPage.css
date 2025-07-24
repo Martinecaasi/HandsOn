@@ -93,3 +93,20 @@ html, body {
   font-size: 14px;
   cursor: pointer;
 }
+
+.waze-link {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #00B3E3;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.waze-link:hover {
+  background-color: #009dc4;
+}
