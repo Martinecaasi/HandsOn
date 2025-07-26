@@ -20,13 +20,14 @@ body {
   width: 100%;
   max-width: 480px;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 170vh;
   background:white;
   padding: 20px;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+
 }
 
 @media (max-width: 350px) {

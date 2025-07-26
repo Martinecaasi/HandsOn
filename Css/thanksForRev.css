@@ -1,0 +1,43 @@
+.thanks-container {
+  background: linear-gradient(to bottom, #ffffff, #E9F6FF, #C1E5FF, #9DD6FF, #6BB1E4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 40px 20px 100px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.thanks-text p {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: #000;
+  margin-top: 250px;
+  text-align: center;
+  max-width: 320px;
+}
+
+.thanks-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thanks-logo img {
+  width: 200px;
+  margin-bottom: 100px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  font-size: 36px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+

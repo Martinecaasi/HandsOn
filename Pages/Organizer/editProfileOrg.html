@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Organization Profile</title>
+  <link rel="stylesheet" href="../Css/style.css" />
+  <link rel="stylesheet" href="../Css/signUpAsOrg.css" />
+</head>
+<body>
+  <div class="mobile-frame organizer-signup">
+
+    <a href="profileOrg.html" class="back-arrow"><img src="../Images/arrow.svg" alt="Back Arrow"></a>
+    <h1 class="title">Edit Profile</h1>
+
+    <form class="signup-form" id="editOrgForm" enctype="multipart/form-data">
+
+      <div class="profile-upload">
+        <label for="orgImageInput" class="avatar-wrapper">
+          <img id="orgAvatarPreview" src="../Images/profile.svg" alt="Organization Profile" />
+        </label>
+        <input type="file" id="orgImageInput" accept="image/png, image/jpeg" hidden />
+      </div>
+
+      <input type="text" id="orgName" placeholder="Organization’s Name" required />
+      <input type="text" id="speciality" placeholder="Speciality" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="number" id="handsNeeded" placeholder="How Many Hands Do You Need?" min="1" max="100" required />
+      <input type="text" id="streetName" placeholder="Street Name" required />
+      <input type="number" id="streetNumber" placeholder="Street Number" required />
+      <input type="text" id="apartmentNumber" placeholder="Apartment Number" />
+      <input type="text" id="apartmentFloor" placeholder="Floor" />
+      <select id="citySelect" required>
+        <option value="">Select City</option>
+      </select>
+      <textarea id="aboutOrg" placeholder="About The Organization" rows="4" required></textarea>
+
+      <button type="submit">Update</button>
+    </form>
+
+    <img src="../Images/handslogo/black.svg" alt="HandsOn logo" class="logo-bottom" />
+  </div>
+
+</body>
+</html>

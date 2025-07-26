@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="../Css/style.css" />
+  <link rel="stylesheet" href="../Css/signUpAsVol.css" />
+</head>
+<body>
+  <div class="mobile-frame volunteer-signup">
+
+    <a href="../Pages/settingsPage.html" class="back-arrow">
+      <img src="../Images/arrow.svg" alt="Back Arrow" />
+    </a>
+
+    <h1 class="title">Edit Profile</h1>
+
+    <form class="signup-form" enctype="multipart/form-data">
+      <div class="profile-upload">
+        <label for="profileImageInput" class="avatar-wrapper">
+          <img id="avatarPreview" src="../Images/profile.svg" alt="Profile" />
+        </label>
+        <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
+      </div>
+
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="tel" placeholder="Phone Number" required />
+      <input type="date" placeholder="Birthdate" required />
+      <input type="password" placeholder="Current Password" required />
+      <input type="password" placeholder="New Password" required />
+      <textarea placeholder="Update about myself..." rows="4" required></textarea>
+
+      <button type="submit">Save</button>
+    </form>
+
+    <img src="../Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
+
+  </div>
+
+  <script>
+    const input = document.getElementById('profileImageInput');
+    const preview = document.getElementById('avatarPreview');
+
+    input.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const textarea = document.querySelector(".signup-form textarea");
+
+      textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+    });
+  </script>
+</body>
+</html>
