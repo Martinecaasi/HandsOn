@@ -1,0 +1,83 @@
+.add-event {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 120vh;
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 900;
+  color: #000;
+}
+
+.event-form input,
+.event-form select,
+.event-form textarea {
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: none;
+  background-color: #cce9ff;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: black;
+}
+
+.event-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.event-form button {
+  background-color: #cce9ff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.event-form button:hover {
+  background-color: #b3dfff;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
+}
+
+.event-form select {
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('../Images/arrow-down.svg'); 
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+}
+
+
+.logo-bottom{
+          width: 60px;
+          height: 60px;
+          margin: 40px
+}

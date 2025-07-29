@@ -1,5 +1,5 @@
 .review-container {
-  background: linear-gradient(to bottom, #ffffff, #E9F6FF, #C1E5FF, #9DD6FF, #6BB1E4);
+  background: #6BB1E4;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -24,16 +24,6 @@
   font-weight: bold;
 }
 
-.stars {
-  font-size: 36px;
-  margin: 20px 0;
-}
-
-.star {
-  cursor: pointer;
-  padding: 0 5px;
-  user-select: none;
-}
 
 .review-textarea {
   width: 100%;
