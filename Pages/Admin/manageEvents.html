@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Events</title>
+  <link rel="stylesheet" href="/Css/Admin/style.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="profile-icon"><img src="/Images/navbar/profile.svg" alt="Profile" /></div>
+      <ul class="menu">
+        <li ><a href="/Pages/Admin/homepage.html">Stats </a></li>
+        <li class="active"><a href="/Pages/Admin/manageEvents.html">Manage Events</li>
+        <li><a href="/Pages/Admin/users.html">Users & Admins</li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Manage Events</h1>
+
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Date & Time</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="eventTableBody">
+          <!-- מתמלא ב-JS -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="manageEvents.js"></script>
+</body>
+</html>

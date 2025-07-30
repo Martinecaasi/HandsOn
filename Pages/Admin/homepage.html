@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Controller</title>
+  <link rel="stylesheet" href="/Css/Admin/style.css" />
+<script src="/JS/admin.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="profile-icon"><img src="/Images/navbar/profile.svg" alt="Profile" /></div>
+      <ul class="menu">
+        <li class="active"> <a href="/Pages/Admin/homepage.html">Stats </a></li>
+        <li><a href="/Pages/Admin/manageEvents.html">Manage Events</a></li>
+        <li><a href="/Pages/Admin/users.html">Users & Admins</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Admin Controller</h1>
+      <h2 class="section-title">Stats</h2>
+
+      <div class="chart-container">
+        <canvas id="statsChart"></canvas>
+
+      </div>
+    </main>
+  </div>
+
+
+</body>
+</html>
