@@ -18,18 +18,5 @@
     <button class="review-submit"><a href="../volunteer/homePage.html">Submit</button>
   </div>
 
-  <script>
-    const stars = document.querySelectorAll('.star');
-    let selectedRating = 0;
-
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        selectedRating = star.getAttribute('data-value');
-        stars.forEach(s => {
-          s.innerHTML = s.getAttribute('data-value') <= selectedRating ? '★' : '☆';
-        });
-      });
-    });
-  </script>
 </body>
 </html>

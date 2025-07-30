@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reviews</title>
+  <link rel="stylesheet" href="/Css/style.css" />
+  <link rel="stylesheet" href="/Css/navBar.css" />
+  <link rel="stylesheet" href="/Css/reviews.css" />
+</head>
+<body>
+  <div class="mobile-frame">
+    <h1 class="title">Reviews</h1>
+
+    <div class="review-card">
+      <p class="review-author">By– Yael Hazam</p>
+      <p class="review-text">I Had a great time blah blah blah Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo voluptates necessitatibus incidunt harum consectetur. Quo delectus officiis fugit nihil, dolores quam corporis modi quod necessitatibus, illo voluptates voluptas ut vitae!</p>
+      <p class="read-more">Read More...</p>
+    </div>
+
+    <div class="review-card">
+      <p class="review-author">By– Yael Hazam</p>
+      <p class="review-text">I Had a great time blah blah blah Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque iste, explicabo molestiae voluptas est odit magni assumenda harum. Ratione molestias fugit consequuntur eaque qui tempora veritatis quos mollitia omnis neque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam corporis in iste sunt obcaecati saepe vel consectetur assumenda fugit fugiat a corrupti natus, magni totam quod, eaque soluta id quos!></label></p>
+      <p class="read-more">Read More...</p>
+    </div>
+  </div>
+<footer class="bottom-nav">
+      <a href="/Pages/Organizer/orgProfile.html"><img src="/Images/navbar/profile.svg" alt="User" />
+      <a href="/Pages/Organizer/calendar.html"><img src="/Images/navbar/calendar.svg" alt="Calendar" />
+      <a href="/Pages/Organizer/addEvent.html"><img src="/Images/navbar/add.svg" alt="Add" />
+      <a href="/Pages/Organizer/homePage.html"><img src="/Images/navbar/home.svg" alt="Home" />
+      <a href="/Pages/Organizer/settingsPage.html"><img src="/Images/navbar/settings.svg" alt="Settings" />
+</footer>
+
+<script>
+  document.querySelectorAll('.read-more').forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.review-card');
+      card.classList.toggle('expanded');
+      button.textContent = card.classList.contains('expanded') ? 'Show Less...' : 'Read More...';
+    });
+  });
+</script>
+</body>
+</html>
+
