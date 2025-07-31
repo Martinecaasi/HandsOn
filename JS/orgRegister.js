@@ -1,4 +1,4 @@
-// orgRegister.js – הרשמה של ארגון חדש במערכת Hands On
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- תצוגה מקדימה של תמונת פרופיל ---
     const input = document.getElementById('orgImageInput');
@@ -23,27 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- טעינת ערים מהשרת שלך ---
-    async function loadCities() {
-        const citySelect = document.getElementById("citySelect");
 
-        try {
-            const response = await fetch('https://handsonserver.onrender.com/api/cities');
-            const cities = await response.json();
+async function loadCities() {
+    try {
+        const cities = await getAllCities();
 
-            citySelect.innerHTML = '<option value="">בחר עיר</option>';
-            cities.forEach(city => {
-                const option = document.createElement("option");
-                option.value = city;
-                option.textContent = city;
-                citySelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error("שגיאה בטעינת ערים:", error);
-            citySelect.innerHTML = '<option value="">שגיאה בטעינה</option>';
-        }
+        const select = document.getElementById('city-select');
+        cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city._id;
+        option.textContent = city.name;
+        select.appendChild(option);
+        });
+
+    } catch (err) {
+        console.error('שגיאה בטעינת ערים:', err);
+    }
     }
 
-    loadCities(); // קריאה לטעינת ערים מהשרת
+    document.addEventListener('DOMContentLoaded', loadCities);
 
     // --- שליחת הטופס ---
     const form = document.querySelector('.signup-form');
