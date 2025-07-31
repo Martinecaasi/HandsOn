@@ -1,74 +1,58 @@
-// orgRegister.js
+// ✅ קובץ orgRegister.js – רישום ארגון עם שליחת תמונה
 
-document.addEventListener('DOMContentLoaded', () => {
-  // הגדרת הטופס והאלמנטים
-  const form = document.querySelector('.signup-form');
-  const imageInput = document.getElementById('orgImageInput');
-  const preview = document.getElementById('orgAvatarPreview');
-  const submitBtn = form.querySelector('button[type="submit"]');
+const form = document.querySelector('.signup-form');
+const imageInput = document.getElementById('orgImageInput');
+const imagePreview = document.getElementById('orgAvatarPreview');
 
-  // --- תצוגה מקדימה של תמונת פרופיל ---
-  imageInput.addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        preview.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+// הצגת preview לתמונה
+imageInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    imagePreview.src = URL.createObjectURL(file);
+  }
+});
+
+// האזנה לשליחת הטופס
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // יצירת FormData כדי לשלוח קובץ ותוכן
+  const formData = new FormData();
+  formData.append('name', document.getElementById('orgName').value);
+  formData.append('email', document.getElementById('email').value);
+  formData.append('password', document.getElementById('password').value);
+  formData.append('phoneNumber', document.getElementById('phone').value);
+  formData.append('streetName', document.getElementById('streetName').value);
+  formData.append('streetNumber', document.getElementById('streetNumber').value);
+  formData.append('apartmentNumber', document.getElementById('apartmentNumber').value);
+  formData.append('apartmentFloor', document.getElementById('apartmentFloor').value);
+  formData.append('city', document.getElementById('citySelect').value);
+  formData.append('about', document.getElementById('about').value);
+
+  // הוספת תמונה אם קיימת
+  if (imageInput.files.length > 0) {
+    formData.append('profileImage', imageInput.files[0]);
+  }
+
+  try {
+    const res = await fetch('https://handsonserver-new.onrender.com/api/organizations/register', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || 'שגיאה ברישום הארגון');
     }
-  });
 
-  // --- שליחת טופס ---
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    const result = await res.json();
+    alert('הארגון נרשם בהצלחה!');
+    console.log('Organization created:', result);
 
-    // שינוי כפתור לטעינה
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'שולח...';
 
-    // יצירת אובייקט FormData
-    const formData = new FormData();
-    formData.append('orgName', document.getElementById('orgName').value);
-    formData.append('phoneNumber', document.getElementById('phone').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('password', document.getElementById('password').value);
-    formData.append('streetName', document.getElementById('streetName').value);
-    formData.append('streetNumber', document.getElementById('streetNumber').value);
-    formData.append('apartmentNumber', document.getElementById('apartmentNumber').value);
-    formData.append('apartmentFloor', document.getElementById('apartmentFloor').value);
-    formData.append('city', document.getElementById('citySelect').value);
-    formData.append('about', document.getElementById('about').value);
-
-    const imageFile = imageInput.files[0];
-    if (imageFile) {
-      formData.append('profileImage', imageFile);
-    }
-
-    try {
-      const response = await fetch('https://handsonserver.onrender.com/api/organizations', {
-        method: 'POST',
-        body: formData
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert('הארגון נרשם בהצלחה!');
-        form.reset(); // ניקוי טופס
-        preview.src = '/Images/profile.svg'; // החזרת תמונת ברירת מחדל
-        window.location.href = '/login.html';
-      } else {
-        alert(data.message || 'שגיאה בהרשמה');
-      }
-
-    } catch (err) {
-      console.error('שגיאה בשליחת הטופס:', err);
-      alert('אירעה שגיאה, נסה שוב מאוחר יותר.');
-    } finally {
-      // החזרת כפתור למצב רגיל
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit';
-    }
-  });
+     window.location.href = '/homePage.html';
+  } catch (err) {
+    console.error('שגיאה בשליחת הטופס:', err);
+    alert(`אירעה שגיאה: ${err.message}`);
+  }
 });
