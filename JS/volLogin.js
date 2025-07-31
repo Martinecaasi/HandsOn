@@ -4,30 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // קבלת ערכים מהטופס
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     try {
       const response = await fetch('https://handsonserver-new.onrender.com/api/volunteers/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password }) // שליחת פרטי התחברות
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // שמירת טוקן ותפקיד (לא חובה אם לא משתמשים בזה)
-        if (data.token) localStorage.setItem('token', data.token);
-        localStorage.setItem('role', 'volunteer');
+        // שמירת שם (אם קיים)
+        if (data.volunteer?.fullName) {
+          localStorage.setItem('volunteerName', data.volunteer.fullName);
+        }
 
         alert('התחברת בהצלחה!');
-
-        // ✅ הפניה ישירה לעמוד הבית של מתנדב
-        window.location.href = '/volunteer/homePage.html';
+        window.location.href = '/volunteer/homePage.html'; // ✅ הפניה
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
