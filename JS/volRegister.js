@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch('https://handsonserver.onrender.com/api/volunteers', {
+      const response = await fetch('https://handsonserver-new.onrender.com/api/volunteers', {
         method: 'POST',
         body: formData 
       });
