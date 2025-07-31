@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/signUpAsOrg.css" />
 </head>
+
 <body>
   <div class="mobile-frame organizer-signup">
 
@@ -22,17 +24,17 @@
         <input type="file" id="orgImageInput" accept="image/png, image/jpeg" hidden />
       </div>
 
-      <input type="text" placeholder="Organizors’s Name" required />
-      <input type="tel" placeholder="Phone Number" required />
-      <input type="email" placeholder="Email" required />
-      <input type="text" id="streetName" placeholder="Street Name" required />
-      <input type="number" id="streetNumber" placeholder="Street Number" required />
-      <input type="text" id="apartmentNumber" placeholder="Apartment Number" />
-      <input type="text" id="apartmentFloor" placeholder="Floor" />
+      <input type="text" id="orgName" name="orgName" placeholder="Organizors’s Name" required />
+      <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <input type="text" id="streetName" name="streetName" placeholder="Street Name" required />
+      <input type="number" id="streetNumber" name="streetNumber" placeholder="Street Number" required />
+      <input type="text" id="apartmentNumber" name="apartmentNumber" placeholder="Apartment Number" />
+      <input type="text" id="apartmentFloor" name="apartmentFloor" placeholder="Floor" />
       <select id="citySelect" required>
         <option value="">Select City</option>
       </select>
-      <textarea placeholder="About The Organization" rows="4" required></textarea>
+      <textarea placeholder="About The Organization" id="about" name="about" rows="4" required></textarea>
 
       <button type="submit">Submit</button>
     </form>
@@ -41,30 +43,8 @@
 
   </div>
 
-  <script>
-      const input = document.getElementById('orgImageInput');
-      const preview = document.getElementById('orgAvatarPreview');
+  <script src="../../Js/orgRegister.js"></script>
 
-      input.addEventListener('change', function () {
-        const file = this.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            preview.src = e.target.result;
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-
-            document.addEventListener("DOMContentLoaded", function () {
-      const textarea = document.querySelector(".signup-form textarea");
-
-      textarea.addEventListener("input", () => {
-      textarea.style.height = "auto"; 
-      textarea.style.height = textarea.scrollHeight + "px"; 
-      });
-      });
-
-  </script>
 </body>
+
 </html>
