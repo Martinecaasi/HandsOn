@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value.trim();
+    // קבלת ערכים מהטופס
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     try {
@@ -13,16 +14,32 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }) // שליחת פרטי התחברות
       });
 
       const data = await response.json();
 
       if (response.ok) {
-       
-        localStorage.setItem('volunteerEmail', email);
+        // שמירת טוקן ותפקיד
+        localStorage.setItem('token', data.token); // אם יש טוקן
+        localStorage.setItem('role', data.role);   // שמירת תפקיד
+
         alert('התחברת בהצלחה!');
-        window.location.href = 'homePage.html';
+
+        // הפניה לפי תפקיד
+        switch (data.role) {
+          case 'admin':
+            window.location.href = '/admin/homePage.html';
+            break;
+          case 'organizer':
+            window.location.href = '/organizer/homePage.html';
+            break;
+          case 'volunteer':
+            window.location.href = '/volunteer/homePage.html';
+            break;
+          default:
+            alert('תפקיד לא מזוהה');
+        }
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
