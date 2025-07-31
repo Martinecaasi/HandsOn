@@ -1,4 +1,4 @@
-const API_BASE = "https://handsonn.netlify.app/api/events";
+const API_BASE = "https://handsonserver-new.onrender.com/api/events";
 
 // 1. שליפת כל האירועים
 export async function getAllEvents() {

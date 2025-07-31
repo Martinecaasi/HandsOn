@@ -1,4 +1,4 @@
-const API_BASE = 'https://handsonn.netlify.app/api/volunteers';
+const API_BASE = 'https://handsonserver-new.onrender.com/api/volunteers';
 
 // בדיקה שה-API זמין
 export async function testVolunteer() {
