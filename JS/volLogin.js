@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
+        // שמירת שם (אם קיים)
         if (data.volunteer?.fullName) {
           localStorage.setItem('volunteerName', data.volunteer.fullName);
-          console.log()
         }
 
         alert('התחברת בהצלחה!');
         document.getElementById('loginBtm').addEventListener('click',()=>{
-          window.location.href='/volunteer/homePage.html';
-        });
+          window.location.href='/volunteer/homePage.html'
+        })
 
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
