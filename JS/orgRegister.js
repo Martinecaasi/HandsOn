@@ -1,5 +1,6 @@
+// orgRegister.js – הרשמה של ארגון חדש במערכת Hands On
 document.addEventListener('DOMContentLoaded', () => {
-    // תצוגה מקדימה של תמונה
+    // --- תצוגה מקדימה של תמונת פרופיל ---
     const input = document.getElementById('orgImageInput');
     const preview = document.getElementById('orgAvatarPreview');
 
@@ -14,26 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // התאמת גובה של textarea
+    // --- התאמת גובה אוטומטית לטקסטאראה ---
     const textarea = document.querySelector('.signup-form textarea');
     textarea.addEventListener('input', () => {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
     });
 
-    // פונקציה לטעינת ערים
+    // --- טעינת ערים מהשרת שלך ---
     async function loadCities() {
         const citySelect = document.getElementById("citySelect");
 
         try {
-            const apiUrl = "https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1000";
-            const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(apiUrl);
-            const response = await fetch(proxyUrl);
-            const wrapped = await response.json();
-            const data = JSON.parse(wrapped.contents);
-            const records = data.result.records;
-
-            const cities = [...new Set(records.map(r => r["שם_ישוב"]).filter(Boolean))].sort();
+            const response = await fetch('https://handsonserver.onrender.com/api/cities');
+            const cities = await response.json();
 
             citySelect.innerHTML = '<option value="">בחר עיר</option>';
             cities.forEach(city => {
@@ -48,10 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // קריאה לפונקציה
-    loadCities();
+    loadCities(); // קריאה לטעינת ערים מהשרת
 
-    // שליחת טופס
+    // --- שליחת הטופס ---
     const form = document.querySelector('.signup-form');
 
     form.addEventListener('submit', async (e) => {
@@ -59,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData();
 
+        // הוספת שדות לטופס
         formData.append('orgName', document.getElementById('orgName').value);
         formData.append('phoneNumber', document.getElementById('phone').value);
         formData.append('email', document.getElementById('email').value);
@@ -69,19 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('city', document.getElementById('citySelect').value);
         formData.append('about', document.getElementById('about').value);
 
+        // בדיקת עיר חובה
         if (!formData.get("city")) {
             alert("יש לבחור עיר מהרשימה.");
             return;
         }
+
+        // תמונת פרופיל – חייב להישלח בשם "profileImage"
         const imageFile = document.getElementById('orgImageInput').files[0];
         if (imageFile) {
-            formData.append('orgImage', imageFile);
+            formData.append('profileImage', imageFile);
         }
 
         try {
             const response = await fetch('https://handsonserver.onrender.com/api/organizations', {
                 method: 'POST',
-                body: formData,
+                body: formData
             });
 
             const data = await response.json();
