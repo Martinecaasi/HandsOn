@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/admins';
+const API_BASE = 'https://handsonn.netlify.app//api/admins';
 
 // בדיקה
 export async function testAdmin() {

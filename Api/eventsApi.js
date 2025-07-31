@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api/events";
+const API_BASE = "https://handsonn.netlify.app/api/events";
 
 // 1. שליפת כל האירועים
 export async function getAllEvents() {

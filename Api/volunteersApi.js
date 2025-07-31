@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/volunteers';
+const API_BASE = 'https://handsonn.netlify.app/api/volunteers';
 
 // בדיקה שה-API זמין
 export async function testVolunteer() {
