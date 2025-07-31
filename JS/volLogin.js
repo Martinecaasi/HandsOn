@@ -17,12 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        if (data.volunteer?.fullName&& data.role && data.volunteer?.email && data.volunteer?._id) {
-          localStorage.setItem('volunteerName', data.volunteer.fullName,
-            'volunteerEmail ', data.volunteer.email,
-            'Role',data.role, 
-            'volunteer_id', data.volunteer._id
-          );
+        if (data.volunteer?.fullName) {
+          localStorage.setItem('volunteerName', data.volunteer.fullName);
           console.log()
         }
 
