@@ -75,3 +75,8 @@
 .login-form button:hover {
   background-color: #cce5ff;
 }
+
+a{
+  text-decoration: none;
+  color: #000;
+}
