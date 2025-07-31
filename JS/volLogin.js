@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // שמירה ב־localStorage אם נרצה בעתיד
         localStorage.setItem('volunteerEmail', email);
         alert('התחברת בהצלחה!');
-        window.location.href = 'Pages/volunteer/homePage.html';
+        window.location.href = 'volunteer/homePage.html';
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
