@@ -20,26 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        // שמירת טוקן ותפקיד
-        localStorage.setItem('token', data.token); // אם יש טוקן
-        localStorage.setItem('role', data.role);   // שמירת תפקיד
+        // שמירת טוקן ותפקיד (לא חובה אם לא משתמשים בזה)
+        if (data.token) localStorage.setItem('token', data.token);
+        localStorage.setItem('role', 'volunteer');
 
         alert('התחברת בהצלחה!');
 
-        // הפניה לפי תפקיד
-        switch (data.role) {
-          case 'admin':
-            window.location.href = '/admin/homePage.html';
-            break;
-          case 'organizer':
-            window.location.href = '/organizer/homePage.html';
-            break;
-          case 'volunteer':
-            window.location.href = '/volunteer/homePage.html';
-            break;
-          default:
-            alert('תפקיד לא מזוהה');
-        }
+        // ✅ הפניה ישירה לעמוד הבית של מתנדב
+        window.location.href = '/volunteer/homePage.html';
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
