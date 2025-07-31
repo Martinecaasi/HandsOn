@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('נרשמת בהצלחה!');
-        window.location.href = '/login.html';
+        window.location.href = 'Pages/login.html';
       } else {
         alert(data.message || 'אירעה שגיאה בהרשמה');
       }

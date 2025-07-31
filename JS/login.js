@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('userRole', 'volunteer');
         localStorage.setItem('volunteerEmail', email);
         alert('התחברת כמתנדב');
-        window.location.href = 'volunteer/homePage.html';
+        window.location.href = 'Pages/volunteer/homePage.html';
         return;
       }
 
