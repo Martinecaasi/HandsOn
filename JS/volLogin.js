@@ -17,9 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        // שמירת שם (אם קיים)
-        if (data.volunteer?.fullName) {
-          localStorage.setItem('volunteerName', data.volunteer.fullName);
+        if (data.volunteer?.fullName&& data.role && data.volunteer?.email && data.volunteer?._id) {
+          localStorage.setItem('volunteerName', data.volunteer.fullName,
+            'volunteerEmail ', data.volunteer.email,
+            'Role',data.role, 
+            'volunteer_id', data.volunteer._id
+          );
+          console.log()
         }
 
         alert('התחברת בהצלחה!');
