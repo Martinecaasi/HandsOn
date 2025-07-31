@@ -7,11 +7,11 @@ export async function testOrganization() {
 }
 
 // רישום ארגון חדש
-export async function registerOrganization(orgData) {
+export async function registerOrganization(formData) {
   const res = await fetch(`${API_BASE}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(orgData)
+    body: JSON.stringify(formData)
   });
   if (!res.ok) throw new Error('Failed to register organization');
   return res.json();

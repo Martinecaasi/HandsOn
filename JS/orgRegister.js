@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('orgName', document.getElementById('orgName').value);
     formData.append('phoneNumber', document.getElementById('phone').value);
     formData.append('email', document.getElementById('email').value);
+    formData.append('password', document.getElementById('password').value);
     formData.append('streetName', document.getElementById('streetName').value);
     formData.append('streetNumber', document.getElementById('streetNumber').value);
     formData.append('apartmentNumber', document.getElementById('apartmentNumber').value);
