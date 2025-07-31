@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         alert('התחברת בהצלחה!');
-        window.location.href = '/volunteer/homePage.html';
+       window.location.href = '/Pages/volunteer/homePage.html';
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
