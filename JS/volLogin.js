@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         alert('התחברת בהצלחה!');
+        document.getElementById('loginBtm').addEventListener('click',()=>{
+          window.location.href='/volunteer/homePage.html';
+        });
 
-        // ✅ מעבר מיידי לעמוד הבית של מתנדב
-        window.location.href = '/volunteer/homePage.html';
       } else {
         alert(data.message || 'פרטי התחברות שגויים');
       }
