@@ -1,8 +1,13 @@
+// orgRegister.js
+
 document.addEventListener('DOMContentLoaded', () => {
-  // --- תצוגה מקדימה של תמונת פרופיל ---
+  // הגדרת הטופס והאלמנטים
+  const form = document.querySelector('.signup-form');
   const imageInput = document.getElementById('orgImageInput');
   const preview = document.getElementById('orgAvatarPreview');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
+  // --- תצוגה מקדימה של תמונת פרופיל ---
   imageInput.addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
@@ -14,31 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- טעינת ערים ממערך סטטי ---
-  const cities = [
-    'תל אביב', 'ירושלים', 'חיפה', 'באר שבע', 'אשדוד', 'אשקלון',
-    'רמת גן', 'גבעתיים', 'נתניה', 'הרצליה', 'פתח תקווה', 'אילת',
-    'טבריה', 'צפת', 'עכו', 'נהריה', 'מודיעין', 'ראשון לציון',
-    'רחובות', 'רעננה', 'כפר סבא', 'בית שמש', 'קריית גת', 'קריית שמונה'
-  ];
-
-  const select = document.getElementById('citySelect');
-  cities.sort((a, b) => a.localeCompare(b, 'he')); // מיון אלפביתי
-  cities.forEach(city => {
-    const option = document.createElement('option');
-    option.value = city;
-    option.textContent = city;
-    select.appendChild(option);
-  });
-
-  // --- שליחת טופס רישום ---
-  const form = document.querySelector('.signup-form');
-
+  // --- שליחת טופס ---
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
+    // שינוי כפתור לטעינה
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'שולח...';
 
+    // יצירת אובייקט FormData
+    const formData = new FormData();
     formData.append('orgName', document.getElementById('orgName').value);
     formData.append('phoneNumber', document.getElementById('phone').value);
     formData.append('email', document.getElementById('email').value);
@@ -48,12 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('apartmentFloor', document.getElementById('apartmentFloor').value);
     formData.append('city', document.getElementById('citySelect').value);
     formData.append('about', document.getElementById('about').value);
-
-
-    if (!formData.get('city')) {
-      alert('יש לבחור עיר מהרשימה');
-      return;
-    }
 
     const imageFile = imageInput.files[0];
     if (imageFile) {
@@ -70,13 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('הארגון נרשם בהצלחה!');
+        form.reset(); // ניקוי טופס
+        preview.src = '/Images/profile.svg'; // החזרת תמונת ברירת מחדל
         window.location.href = '/login.html';
       } else {
         alert(data.message || 'שגיאה בהרשמה');
       }
+
     } catch (err) {
       console.error('שגיאה בשליחת הטופס:', err);
       alert('אירעה שגיאה, נסה שוב מאוחר יותר.');
+    } finally {
+      // החזרת כפתור למצב רגיל
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
     }
   });
 });
