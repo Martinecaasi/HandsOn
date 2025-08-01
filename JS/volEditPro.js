@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!volunteerId) {
     alert("Volunteer ID not found. Please login again.");
-    window.location.href = "/logIn.html";
+    window.location.href = "/Pages/logIn.html";
     return;
   }
 
@@ -17,11 +17,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const aboutInput = form.querySelector('textarea');
   const profileInput = document.getElementById('profileImageInput');
   const avatarPreview = document.getElementById('avatarPreview');
+  const backArrow = document.querySelector('.back-arrow');
 
-  // ✅ שלב 1 – שליפת נתוני משתמש
+  // 🠔 ניווט חזור
+  if (backArrow) {
+    backArrow.style.cursor = 'pointer';
+    backArrow.addEventListener('click', () => {
+      window.location.href = '/Pages/volunteer/settingsPage.html';
+    });
+  }
+
+  // 🧠 שליפת נתוני מתנדב
   async function loadProfile() {
     try {
       const res = await fetch(`/api/volunteers/${volunteerId}`);
+      if (!res.ok) throw new Error('Volunteer not found');
       const data = await res.json();
 
       nameInput.value = data.fullName || '';
@@ -35,15 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     } catch (err) {
       console.error('❌ Failed to load profile:', err);
+      alert("Couldn't load profile details.");
     }
   }
 
-  // ✅ שלב 2 – שליחת עדכון
+  // 📝 שמירת פרופיל
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-
     formData.append('fullName', nameInput.value);
     formData.append('email', emailInput.value);
     formData.append('phoneNumber', phoneInput.value);
@@ -75,10 +85,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     } catch (err) {
       console.error('❌ Error updating profile:', err);
+      alert("Something went wrong while updating.");
     }
   });
 
-  // ✅ תצוגה מקדימה של תמונה
+  // 🖼️ תצוגה מקדימה של תמונה
   profileInput.addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
@@ -90,5 +101,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // 🚀 הפעלת שליפה
   loadProfile();
 });
+
+
+const backArrow = document.querySelector('.back-arrow');
+
+if (backArrow) {
+  backArrow.style.cursor = 'pointer'; // שינוי עכבר ליד
+  backArrow.addEventListener('click', () => {
+    window.location.href = '/Pages/volunteer/settingsPage.html';
+  });
+}
