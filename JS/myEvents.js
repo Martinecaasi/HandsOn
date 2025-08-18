@@ -4,7 +4,7 @@ import { getRegisteredEvents } from "../Api/eventsApi.js";
 // בדיקת התחברות
 const volunteer = JSON.parse(localStorage.getItem("loggedInUser"));
 
-if (!volunteer || !volunteer._id) {
+if (!volunteer || !volunteerId) {
     alert("You must be logged in to view your events.");
     window.location.href = "/pages/logIn.html";
 }
