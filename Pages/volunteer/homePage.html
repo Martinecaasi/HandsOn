@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homepage</title>
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/navBar.css" />
   <link rel="stylesheet" href="/Css/homePage.css" />
-  
+
 </head>
+
 <body>
   <div class="mobile-frame homepage">
     <!-- לוגו באמצע -->
@@ -35,52 +37,62 @@
     <!-- כותרת -->
     <div class="events-section">
       <h2 class="section-title">Upcoming Events</h2>
-  
-  <!-- רשימת האירועים תיכנס כאן -->
-    <div class="event-list">
-    <!-- דוגמה ידנית – תוחלף מאוחר יותר ב-JS -->
-     <div class="event-card">
-      <p><strong>Title:</strong> Join Us For A Day Of Giving!</p>
-      <p><strong>Date & Time:</strong> Sunday, February 16 | 10:00–16:00</p>
-      <p><strong>Location:</strong> Gan Meir, Tel-Aviv</p>
-      <p class="more">click Here For More</p>
-    </div>
 
-    <div class="event-card">
-      <p><strong>Title:</strong> Give A Hand, Make A Change</p>
-      <p><strong>Date & Time:</strong> Monday, February 24 | 9:00–15:00</p>
-      <p><strong>Location:</strong> Zikim Beach, Kibutz Zikim</p>
-      <p class="more"><a href="/Pages/volunteer/eventPage.html">click Here For More</p>
+      <!-- רשימת האירועים תיכנס כאן -->
+      <div class="event-list">
+        <!-- דוגמה ידנית – תוחלף מאוחר יותר ב-JS -->
+        <div class="event-card">
+          <p><strong>Title:</strong> Join Us For A Day Of Giving!</p>
+          <p><strong>Date & Time:</strong> Sunday, February 16 | 10:00–16:00</p>
+          <p><strong>Location:</strong> Gan Meir, Tel-Aviv</p>
+          <p class="more">click Here For More</p>
+        </div>
+
+        <div class="event-card">
+          <p><strong>Title:</strong> Give A Hand, Make A Change</p>
+          <p><strong>Date & Time:</strong> Monday, February 24 | 9:00–15:00</p>
+          <p><strong>Location:</strong> Zikim Beach, Kibutz Zikim</p>
+          <p class="more"><a href="/Pages/volunteer/eventPage.html">click Here For More</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
-<footer class="bottom-nav">
-  <a><img class="profile-icon" src="/Images/navbar/profile.svg" alt="Profile" /></a>
-  <a href="/Pages/volunteer/myEvents.html"><img src="/Images/navbar/calendar.svg" alt="Calendar" /></a>
-  <a href="/Pages/volunteer/homePage.html"><img src="/Images/navbar/home.svg" alt="Home" /></a>
-  <a href="/Pages/volunteer/settingsPage.html"><img src="/Images/navbar/settings.svg" alt="Settings" /></a>
-</footer>
+  <footer class="bottom-nav">
+    <a id="profileButton">
+      <img class="profile-icon" src="/Images/navbar/profile.svg" alt="Profile" />
+    </a>
+    <a href="/Pages/volunteer/myEvents.html">
+      <img src="/Images/navbar/calendar.svg" alt="Calendar" />
+    </a>
+    <a href="/Pages/volunteer/homePage.html">
+      <img src="/Images/navbar/home.svg" alt="Home" />
+    </a>
+    <a href="/Pages/volunteer/settingsPage.html">
+      <img src="/Images/navbar/settings.svg" alt="Settings" />
+    </a>
+  </footer>
 
+  <script src="/JS/scripts.js" type="module"></script>
 
   <script>
-  function toggleFilterMenu() {
-    const menu = document.getElementById("filterMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
+    function toggleFilterMenu() {
+      const menu = document.getElementById("filterMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
 
-  function applyFilter(type) {
-    console.log("Filtering by:", type); 
-    document.getElementById("filterMenu").style.display = "none";
-  }
-
-  window.addEventListener("click", function (e) {
-    if (!e.target.closest(".filter-wrapper")) {
+    function applyFilter(type) {
+      console.log("Filtering by:", type);
       document.getElementById("filterMenu").style.display = "none";
     }
-  });
-</script>
+
+    window.addEventListener("click", function (e) {
+      if (!e.target.closest(".filter-wrapper")) {
+        document.getElementById("filterMenu").style.display = "none";
+      }
+    });
+  </script>
 
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const profileIcon = document.querySelector('.profile-icon');
+  const profileButton = document.getElementById('profileButton');
 
-  if (profileIcon) {
-    profileIcon.style.cursor = 'pointer';
-    profileIcon.addEventListener('click', () => {
+  if (profileButton) {
+    profileButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
       const userRole = localStorage.getItem('userRole');
 
       if (!userRole) {

@@ -6,41 +6,40 @@
   <title>Edit Event</title>
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/addEvent.css" />
+  <script src="/JS/editEvent.js" type="module"></script>
 </head>
 <body>
   <div class="mobile-frame add-event">
 
-    <a href="organizerProfile.html" class="back-arrow">
+    <a href="/Pages/Organizer/organizerProfile.html" class="back-arrow">
       <img src="/Images/arrow.svg" alt="Back Arrow" />
     </a>
 
     <h1 class="title">Edit Event</h1>
 
-    <form class="event-form">
-      <input type="text" placeholder="Event Title" value="Beach Cleanup - Tel Aviv" required />
-      <input type="date" value="2025-08-10" required />
-      <input type="time" value="10:00" required />
-      <input type="text" placeholder="City" value="Tel Aviv" required />
-      <input type="text" placeholder="Street Name" value="Herzl" required />
-      <input type="number" placeholder="Street Number" value="15" required />
-      <input type="number" placeholder="How Many Hands Do You Need?" value="30" required />
+    <form class="event-form" id="editEventForm">
+      <input type="text" id="title" placeholder="Event Title" required />
+      <input type="date" id="date" required />
+      <input type="time" id="startTime" required />
+      <input type="text" id="city" placeholder="City" required />
+      <input type="text" id="streetName" placeholder="Street Name" required />
+      <input type="number" id="streetNumber" placeholder="Street Number" required />
+      <input type="number" id="handsNeeded" placeholder="How Many Hands Do You Need?" required />
 
-      <select required>
+      <select id="category" required>
         <option value="">Category</option>
-        <option selected>Environment</option>
+        <option>Environment</option>
         <option>Children</option>
         <option>Elderly</option>
         <option>Animals</option>
         <option>Education</option>
         <option>Special Needs</option>
       </select>
-      
-      <input type="tel" placeholder="Contact Phone" value="0501234567" />
-      <input type="email" placeholder="Contact Email" value="beach@hands.org" />
 
-      <textarea placeholder="Describe the volunteering activity ..." rows="4" required>
-          Join us for a beach cleanup to protect marine life and keep our shores clean.
-      </textarea>
+      <input type="tel" id="contactPhone" placeholder="Contact Phone" />
+      <input type="email" id="contactEmail" placeholder="Contact Email" />
+
+      <textarea id="description" placeholder="Describe the volunteering activity ..." rows="4" required></textarea>
 
       <button type="submit">Update Event</button>
     </form>

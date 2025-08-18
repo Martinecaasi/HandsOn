@@ -1,10 +1,10 @@
-// ✅ קובץ orgRegister.js – רישום ארגון עם שליחת תמונה
+//קובץ orgRegister.js – רישום ארגון כולל שמירת משתמש
 
 const form = document.querySelector('.signup-form');
 const imageInput = document.getElementById('orgImageInput');
 const imagePreview = document.getElementById('orgAvatarPreview');
 
-// הצגת preview לתמונה
+// תצוגה מקדימה של התמונה שנבחרה
 imageInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (file) {
@@ -12,11 +12,11 @@ imageInput.addEventListener('change', (e) => {
   }
 });
 
-// האזנה לשליחת הטופס
+// שליחת טופס רישום ארגון
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // יצירת FormData כדי לשלוח קובץ ותוכן
+  // הכנת הנתונים עם FormData כולל תמונה
   const formData = new FormData();
   formData.append('name', document.getElementById('orgName').value);
   formData.append('email', document.getElementById('email').value);
@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
   formData.append('city', document.getElementById('citySelect').value);
   formData.append('about', document.getElementById('about').value);
 
-  // הוספת תמונה אם קיימת
+  // אם יש תמונה – נוסיף גם אותה
   if (imageInput.files.length > 0) {
     formData.append('profileImage', imageInput.files[0]);
   }
@@ -46,11 +46,15 @@ form.addEventListener('submit', async (e) => {
     }
 
     const result = await res.json();
+
+    //שמירת פרטי הארגון המחובר
+    localStorage.setItem('loggedInUser', JSON.stringify(result.organization));
+
     alert('הארגון נרשם בהצלחה!');
     console.log('Organization created:', result);
 
-
-     window.location.href = '/homePage.html';
+    //הפנייה לעמוד הבית של הארגון
+    window.location.href = '/Pages/Organizer/homePage.html';
   } catch (err) {
     console.error('שגיאה בשליחת הטופס:', err);
     alert(`אירעה שגיאה: ${err.message}`);
