@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
 
   if (!loginForm) {
-    console.error('🛑 אלמנט עם id="loginForm" לא נמצא בדף!');
+    console.error('Element with id="loginForm" not found in the page!');
     return;
   }
 
@@ -22,18 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
+        // Save volunteer name (optional)
         if (data.volunteer?.fullName) {
           localStorage.setItem('volunteerName', data.volunteer.fullName);
         }
 
-        alert('התחברת בהצלחה!');
-       window.location.href = '/Pages/volunteer/homePage.html';
+        // Save user role
+        localStorage.setItem('userRole', 'volunteer');
+
+        alert('Login successful!');
+        window.location.href = '/Pages/volunteer/homePage.html';
       } else {
-        alert(data.message || 'פרטי התחברות שגויים');
+        alert(data.message || 'Invalid email or password');
       }
     } catch (error) {
-      console.error('שגיאה בעת התחברות:', error);
-      alert('אירעה שגיאה. נסה שוב מאוחר יותר.');
+      console.error('Login error:', error);
+      alert('An error occurred. Please try again later.');
     }
   });
 });
