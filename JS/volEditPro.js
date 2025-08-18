@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!volunteerId) {
     alert("Volunteer ID not found. Please login again.");
-    window.location.href = "/Pages/logIn.html";
+    window.location.href = '/pages/login.html';
     return;
   }
 
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if (backArrow) {
     backArrow.style.cursor = 'pointer';
     backArrow.addEventListener('click', () => {
-      window.location.href = '/Pages/volunteer/settingsPage.html';
+      window.location.href = '/pages/volunteer/settingsPage.html';
     });
   }
 
-  // 🧠 שליפת נתוני מתנדב
+  //שליפת נתוני מתנדב
   async function loadProfile() {
     try {
       const res = await fetch(`/api/volunteers/${volunteerId}`);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // 📝 שמירת פרופיל
+  // שמירת פרופיל
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (res.ok) {
         alert('✅ Profile updated successfully');
-        window.location.href = "/Pages/volunteer/profileVol.html";
+        window.location.href = "/pages/volunteer/profileVol.html";
       } else {
         alert(result.message || '❌ Error updating profile');
       }
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // 🚀 הפעלת שליפה
+  //הפעלת שליפה
   loadProfile();
 });
 
@@ -111,6 +111,6 @@ const backArrow = document.querySelector('.back-arrow');
 if (backArrow) {
   backArrow.style.cursor = 'pointer'; // שינוי עכבר ליד
   backArrow.addEventListener('click', () => {
-    window.location.href = '/Pages/volunteer/settingsPage.html';
+    window.location.href = '/pages/volunteer/settingsPage.html';
   });
 }

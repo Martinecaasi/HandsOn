@@ -7,7 +7,7 @@ const eventId = urlParams.get('id');
 
 if (!eventId) {
   alert("Event ID not found in URL.");
-  window.location.href = "/Pages/Organizer/homePage.html";
+  window.location.href = "/pages/Organizer/homePage.html";
 }
 
 // שליפת אירוע קיים לפי ID
@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
   try {
     await updateEvent(eventId, updatedEvent);
     alert("Event updated successfully!");
-    window.location.href = '/Pages/Organizer/homePage.html';
+    window.location.href = '/pages/Organizer/homePage.html';
   } catch (err) {
     console.error('Error updating event:', err);
     alert('Failed to update event.');

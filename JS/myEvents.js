@@ -6,7 +6,7 @@ const volunteer = JSON.parse(localStorage.getItem("loggedInUser"));
 
 if (!volunteer || !volunteer._id) {
   alert("You must be logged in to view your events.");
-  window.location.href = "/Pages/volunteer/loginVol.html";
+  window.location.href = "/pages/volunteer/loginVol.html";
 }
 
 const container = document.querySelector(".my-events-page");

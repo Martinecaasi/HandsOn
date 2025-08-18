@@ -7,7 +7,7 @@ const imagePreview = document.getElementById('orgAvatarPreview');
 const org = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!org || !org._id) {
   alert('No organization is currently logged in');
-  window.location.href = '/Pages/Organizer/loginOrg.html'; // התאימי לנתיב שלך
+  window.location.href = '/pages/Organizer/loginOrg.html'; // התאימי לנתיב שלך
 }
 
 //מילוי נתונים קיימים בטופס
@@ -70,7 +70,7 @@ form.addEventListener('submit', async (e) => {
     localStorage.setItem('loggedInUser', JSON.stringify(updated.organization));
 
     alert('הפרופיל עודכן בהצלחה!');
-    window.location.href = '/Pages/Organizer/profileOrg.html'; // עמוד הפרופיל
+    window.location.href = '/pages/Organizer/profileOrg.html'; // עמוד הפרופיל
   } catch (err) {
     console.error('שגיאה בעדכון הארגון:', err);
     alert(`אירעה שגיאה: ${err.message}`);

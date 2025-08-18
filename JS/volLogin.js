@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('userRole', 'volunteer');
 
         alert('Login successful!');
-        window.location.href = '/Pages/volunteer/homePage.html';
+        window.location.href = '/pages/volunteer/homePage.html';
       } else {
         alert(data.message || 'Invalid email or password');
       }

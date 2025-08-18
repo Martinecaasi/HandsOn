@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (!email) {
         alert('עליך להתחבר קודם');
-        window.location.href = '/login.html';
+        window.location.href = '/pages/login.html';
         return;
       }
 

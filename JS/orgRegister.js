@@ -54,7 +54,7 @@ form.addEventListener('submit', async (e) => {
     console.log('Organization created:', result);
 
     //הפנייה לעמוד הבית של הארגון
-    window.location.href = '/Pages/Organizer/homePage.html';
+    window.location.href = '/pages/Organizer/homePage.html';
   } catch (err) {
     console.error('שגיאה בשליחת הטופס:', err);
     alert(`אירעה שגיאה: ${err.message}`);

@@ -5,7 +5,7 @@ const org = JSON.parse(localStorage.getItem('loggedInUser'));
 
 if (!org || !org._id) {
   alert("You must be logged in as an organization to create an event.");
-  window.location.href = '/Pages/Organizer/loginOrg.html'; // או לפי הנתיב שלך
+  window.location.href = '/pages/Organizer/loginOrg.html';
 }
 
 form.addEventListener('submit', async (e) => {
@@ -36,7 +36,7 @@ form.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('Failed to create event');
 
     alert("Event created successfully!");
-    window.location.href = '/Pages/Organizer/homePage.html';
+    window.location.href = '/pages/Organizer/homePage.html';
   } catch (err) {
     console.error('Error creating event:', err);
     alert("An error occurred while creating the event.");

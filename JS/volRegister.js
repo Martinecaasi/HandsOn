@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('https://handsonserver-new.onrender.com/api/volunteers/register', {
         method: 'POST',
-        body: formData 
+        body: formData
       });
 
       const data = await response.json();
 
       if (response.ok) {
         alert('נרשמת בהצלחה!');
-        window.location.href = '/login.html';
+        window.location.href = '/pages/login.html';
       } else {
         alert(data.message || 'אירעה שגיאה בהרשמה');
       }
