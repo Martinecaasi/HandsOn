@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.setItem('userRole', 'volunteer');
-        localStorage.setItem('volunteer', JSON.stringify(data.volunteer)); // ✅ הוספנו
+        localStorage.setItem('loggedInUser', JSON.stringify(data.volunteer));
+
 
         alert('Login successful!');
         window.location.href = '/pages/volunteer/homePage.html';
