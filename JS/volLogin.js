@@ -22,17 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Save volunteer name (optional)
         if (data.volunteer?.fullName) {
           localStorage.setItem('volunteerName', data.volunteer.fullName);
         }
 
-        // Save user role
         localStorage.setItem('userRole', 'volunteer');
+        localStorage.setItem('volunteer', JSON.stringify(data.volunteer)); // ✅ הוספנו
 
         alert('Login successful!');
         window.location.href = '/pages/volunteer/homePage.html';
-      } else {
+      }
+      else {
         alert(data.message || 'Invalid email or password');
       }
     } catch (error) {
