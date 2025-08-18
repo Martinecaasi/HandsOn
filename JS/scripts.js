@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = '/Pages/volunteer/profileVol.html';
           break;
         case 'organization':
-          window.location.href = '/Pages/organization/profileOrg.html';
+          window.location.href = '/Pages/organization/orgProfile.html';
           break;
         case 'admin':
           window.location.href = '/Pages/admin/profileAdmin.html';
