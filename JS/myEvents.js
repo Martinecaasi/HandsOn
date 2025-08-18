@@ -9,7 +9,7 @@ if (!volunteer || !volunteer._id) {
   window.location.href = "/pages/volunteer/loginVol.html";
 }
 
-const container = document.querySelector(".my-events-page");
+const container = document.querySelector("#eventsContainer");
 
 // פונקציה ליצירת כרטיס אירוע
 function createEventCard(event) {
