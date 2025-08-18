@@ -9,23 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!userRole) {
                 alert('You must be logged in to access your profile.');
-                window.location.href = '/Pages/login.html';
+                window.location.href = '/pages/login.html';
                 return;
             }
 
             switch (userRole) {
                 case 'volunteer':
-                    window.location.href = '/Pages/volunteer/profileVol.html';
+                    window.location.href = '/pages/volunteer/profileVol.html';
                     break;
                 case 'organization':
-                    window.location.href = '/Pages/organization/orgProfile.html';
+                    window.location.href = '/pages/organization/orgProfile.html';
                     break;
                 case 'admin':
-                    window.location.href = '/Pages/admin/profileAdmin.html';
+                    window.location.href = '/pages/admin/profileAdmin.html';
                     break;
                 default:
                     alert('Unknown user role. Please log in again.');
-                    window.location.href = '/Pages/login.html';
+                    window.location.href = '/pages/login.html';
             }
         });
     }
