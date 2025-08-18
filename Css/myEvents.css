@@ -1,11 +1,6 @@
-:root {
-  --footer-height: 70px;
-}
-
 .my-events-page {
   padding: 20px;
   font-family: 'Arial', sans-serif;
-  padding-bottom: calc(var(--footer-height) + 20px);
 }
 
 .page-title {
