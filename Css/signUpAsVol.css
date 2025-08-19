@@ -1,18 +1,25 @@
-/* מעטפת דף */
+/* מבנה כולל */
 .mobile-frame.volunteer-signup {
   width: 100%;
   max-width: 480px;
-  height: 100vh; /* קובע גובה קבוע – ללא גלילה */
+  min-height: 100vh;
   margin: 0 auto;
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   position: relative;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow: hidden;
+  padding-bottom: 120px;
+}
+
+/* תוכן שגולל */
+.mobile-frame.volunteer-signup > .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 80px 20px 40px; /* מקום לחץ למעלה וללוגו למטה */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 /* חץ חזרה */
@@ -31,22 +38,34 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 10;
 }
+
 .back-arrow img {
   width: 20px;
   height: 20px;
 }
 
-/* אזור עליון */
-.top-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+/* כותרת */
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
 }
 
+/* טופס */
+.signup-form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* תמונת פרופיל */
 .profile-upload {
-  width: 80px;
-  height: 80px;
+  width: 130px;
+  height: 130px;
 }
 .avatar-wrapper {
   width: 100%;
@@ -63,53 +82,42 @@
   object-fit: cover;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #000;
-}
-
-/* טופס */
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-}
 .signup-form input,
 .signup-form textarea {
-  padding: 10px;
+  padding: 14px;
   border: none;
   border-radius: 25px;
   background-color: #C1E5FF;
   font-size: 14px;
+  font-weight: 600;
   width: 100%;
-  max-width: 300px;
-  height: 38px;
-}
-.signup-form textarea {
-  resize: none;
-  height: 48px;
+  height: 52px;
+  font-family: 'Arial', sans-serif;
 }
 
-/* כפתור שליחה */
+.signup-form textarea {
+  resize: none;
+  min-height: 60px;
+  max-height: 200px;
+  line-height: 1.4;
+}
+
 .signup-form button {
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #6BB1E4;
   border: none;
   border-radius: 999px;
   color: black;
-  width: 160px;
-  height: 40px;
+  margin-top: 10px;
+  width: 180px;
+  height: 50px;
   cursor: pointer;
 }
 
-/* לוגו */
 .logo-bottom {
-  width: 50px;
+  width: 60px;
   height: auto;
-  margin-top: 10px;
+  margin-top: 60px;
 }
