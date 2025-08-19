@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up As An Volunteer</title>
-  <script src="/JS/volRegister.js" type="module" ></script>
+  <title>Sign Up As A Volunteer</title>
+  <script src="/JS/volRegister.js" type="module"></script>
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/signupAsVol.css" />
 </head>
+
 <body>
   <div class="mobile-frame volunteer-signup">
 
-    <a href="/Pages/signupAs.html" class="back-arrow"><img src="/Images/arrow.svg" alt="Back Arrow"></a>
-    <h1 class="title">Sign Up</h1>
+    <a href="/Pages/signupAs.html" class="back-arrow">
+      <img src="/Images/arrow.svg" alt="Back Arrow" width="20" height="20" />
+    </a>
 
-    <form id="registerVolunteerForm" class="signup-form" enctype="multipart/form-data">
-      <div class="profile-upload">
-        <label for="profileImageInput" class="avatar-wrapper">
-          <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
-        </label>
-        <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
-      </div>
+    <div class="content">
+      <h1 class="title">Sign Up</h1>
 
-      <input type="text" id="fullName" name="fullName" placeholder="Fullname" required />
-      <input type="email" id="email" name="email" placeholder="Email" required />
-      <input type="password" id="password" name="password" placeholder="Password" required />
-      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required />
-      <input type="date" id="birthdate" name="birthdate" required />
-      <textarea id="aboutMe" name="aboutMe" placeholder="About Me..." rows="4" required></textarea>
+      <form id="registerVolunteerForm" class="signup-form" enctype="multipart/form-data">
+        <div class="profile-upload">
+          <label for="profileImageInput" class="avatar-wrapper">
+            <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
+          </label>
+          <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <input type="text" id="fullName" name="fullName" placeholder="Fullname" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <input type="password" id="password" name="password" placeholder="Password" required />
+        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required />
+        <input type="date" id="birthdate" name="birthdate" required />
+        <textarea id="aboutMe" name="aboutMe" placeholder="About Me..." rows="4" required></textarea>
 
+        <button type="submit">Submit</button>
+      </form>
 
-    <img src="/Images/handslogo/black.svg" alt="HandsOn logo" class="logo-bottom" />
+      <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
+    </div>
 
-  </div>
-
-      <script>
+    <script>
       const input = document.getElementById('profileImageInput');
       const preview = document.getElementById('avatarPreview');
 
@@ -53,14 +57,14 @@
       });
 
       document.addEventListener("DOMContentLoaded", function () {
-      const textarea = document.querySelector(".signup-form textarea");
-
-      textarea.addEventListener("input", () => {
-      textarea.style.height = "auto"; 
-      textarea.style.height = textarea.scrollHeight + "px"; 
+        const textarea = document.querySelector(".signup-form textarea");
+        textarea.addEventListener("input", () => {
+          textarea.style.height = "auto";
+          textarea.style.height = textarea.scrollHeight + "px";
+        });
       });
-      });
-
     </script>
+  </div>
 </body>
+
 </html>
