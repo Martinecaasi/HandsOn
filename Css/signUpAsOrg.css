@@ -2,7 +2,8 @@
   width: 100%;
   max-width: 480px;
   min-width: 320px;
-  min-height: 100vh; /* שונה מ־130vh כדי לבטל גלילה */
+  min-height: 100vh;
+  /* שונה מ־130vh כדי לבטל גלילה */
   background: white;
   padding: 20px;
   margin: 0 auto;
@@ -12,7 +13,8 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  overflow: hidden; /* מונע גלילה */
+  overflow: hidden;
+  /* מונע גלילה */
 }
 
 .back-arrow {
@@ -33,7 +35,8 @@
 }
 
 .title {
-  font-size: 28px; /* מוקטן מ־45px */
+  font-size: 28px;
+  /* מוקטן מ־45px */
   font-weight: bold;
   margin: 10px 0;
   color: black;
@@ -52,7 +55,7 @@
   position: relative;
   width: 100px;
   height: 100px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .avatar-wrapper {
@@ -62,7 +65,6 @@
   border: 2px solid black;
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
   background-color: white;
   cursor: pointer;
 }
@@ -72,6 +74,7 @@
   height: 100%;
   object-fit: cover;
 }
+
 
 .plus-button {
   position: absolute;
@@ -98,10 +101,12 @@
   border: none;
   border-radius: 20px;
   background-color: #C1E5FF;
-  font-size: 12px; /* מוקטן מ־14px */
+  font-size: 12px;
+  /* מוקטן מ־14px */
   font-weight: 500;
   width: 280px;
-  height: 40px; /* מוקטן מ־52px */
+  height: 40px;
+  /* מוקטן מ־52px */
   box-sizing: border-box;
 }
 
@@ -115,15 +120,18 @@
 
 .signup-form button {
   padding: 10px;
-  font-size: 16px; /* מוקטן מ־20px */
+  font-size: 16px;
+  /* מוקטן מ־20px */
   font-weight: bold;
   background-color: #6BB1E4;
   border: none;
   border-radius: 999px;
   color: black;
   margin-top: 8px;
-  width: 160px; /* מוקטן */
-  height: 45px; /* מוקטן */
+  width: 160px;
+  /* מוקטן */
+  height: 45px;
+  /* מוקטן */
   cursor: pointer;
 }
 
