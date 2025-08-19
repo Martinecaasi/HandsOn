@@ -130,13 +130,13 @@ body {
   background-color: #009dc4;
 }
 
-
 .bottom-nav {
   position: fixed;
   left: 50%;
-  bottom: 10px;
   transform: translateX(-50%);
-  width: min(95%, 480px);
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: calc(100% - 24px);
+  max-width: 480px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -146,7 +146,6 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   z-index: 1000;
 }
-
 
 .bottom-nav img {
   width: 42px;
