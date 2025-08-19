@@ -3,7 +3,6 @@
   max-width: 480px;
   min-width: 320px;
   min-height: 100vh;
-  /* שונה מ־130vh כדי לבטל גלילה */
   background: white;
   padding: 20px;
   margin: 0 auto;
@@ -14,7 +13,6 @@
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  /* מונע גלילה */
 }
 
 .back-arrow {
@@ -36,7 +34,6 @@
 
 .title {
   font-size: 28px;
-  /* מוקטן מ־45px */
   font-weight: bold;
   margin: 10px 0;
   color: black;
@@ -100,11 +97,9 @@
   border-radius: 20px;
   background-color: #C1E5FF;
   font-size: 12px;
-  /* מוקטן מ־14px */
   font-weight: 500;
   width: 280px;
   height: 40px;
-  /* מוקטן מ־52px */
   box-sizing: border-box;
 }
 
@@ -117,19 +112,16 @@
 }
 
 .signup-form button {
-  padding: 10px;
-  font-size: 16px;
-  /* מוקטן מ־20px */
+  padding: 8px;
+  font-size: 14px;
   font-weight: bold;
   background-color: #6BB1E4;
   border: none;
   border-radius: 999px;
   color: black;
   margin-top: 8px;
-  width: 160px;
-  /* מוקטן */
-  height: 45px;
-  /* מוקטן */
+  width: 140px;
+  height: 40px;
   cursor: pointer;
 }
 
