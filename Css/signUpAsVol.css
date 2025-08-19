@@ -7,19 +7,12 @@
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding-bottom: 120px;
-}
-
-/* תוכן שגולל */
-.mobile-frame.volunteer-signup > .content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 80px 20px 40px; /* מקום לחץ למעלה וללוגו למטה */
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
 /* חץ חזרה */
@@ -44,11 +37,23 @@
   height: 20px;
 }
 
+/* תוכן */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 18px;
+  width: 100%;
+}
+
 /* כותרת */
 .title {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
   color: #000;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -58,15 +63,16 @@
   max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
 }
 
 /* תמונת פרופיל */
 .profile-upload {
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
 }
+
 .avatar-wrapper {
   width: 100%;
   height: 100%;
@@ -76,6 +82,7 @@
   background-color: white;
   cursor: pointer;
 }
+
 .avatar-wrapper img {
   width: 100%;
   height: 100%;
@@ -84,40 +91,40 @@
 
 .signup-form input,
 .signup-form textarea {
-  padding: 14px;
+  padding: 10px;
   border: none;
   border-radius: 25px;
   background-color: #C1E5FF;
   font-size: 14px;
   font-weight: 600;
   width: 100%;
-  height: 52px;
+  height: 42px;
   font-family: 'Arial', sans-serif;
 }
 
 .signup-form textarea {
   resize: none;
-  min-height: 60px;
-  max-height: 200px;
+  min-height: 50px;
+  max-height: 120px;
   line-height: 1.4;
 }
 
 .signup-form button {
-  padding: 12px;
-  font-size: 18px;
+  padding: 10px;
+  font-size: 16px;
   font-weight: bold;
   background-color: #6BB1E4;
   border: none;
   border-radius: 999px;
   color: black;
-  margin-top: 10px;
-  width: 180px;
-  height: 50px;
+  margin-top: 5px;
+  width: 160px;
+  height: 45px;
   cursor: pointer;
 }
 
 .logo-bottom {
-  width: 60px;
+  width: 40px;
   height: auto;
-  margin-top: 60px;
+  margin-top: 20px;
 }
