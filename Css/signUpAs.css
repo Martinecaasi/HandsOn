@@ -1,5 +1,4 @@
-/* signupAs.css – עמוד בחירת תפקיד */
-
+/* מעטפת דף */
 .mobile-frame.signup-as {
   width: 100%;
   max-width: 480px;
@@ -8,22 +7,12 @@
   background: linear-gradient(to bottom, #ffffff, #E9F6FF, #C1E5FF, #9DD6FF, #6BB1E4);
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding-bottom: 120px;
-}
-
-
-.mobile-frame.signup-as>.content {
-  flex: 1;
-  padding: 60px 20px 40px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  position: relative;
+  padding: 0 20px;
 }
 
-
+/* חץ חזרה נשאר בפינה עליונה */
 .back-arrow {
   position: absolute;
   top: 20px;
@@ -45,22 +34,33 @@
   height: 20px;
 }
 
+/* תוכן שממרכז את הכל אנכית */
+.signup-as .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ממרכז לגובה */
+  height: 100vh;           /* תופס את כל המסך */
+  text-align: center;
+  gap: 40px;               /* רווח בין הכותרת / כפתורים / לוגו */
+  padding-top: 60px;       /* כדי שהחץ לא יכסה */
+  padding-bottom: 60px;
+}
 
+/* כותרת דקה יותר */
 .signup-as .title {
   font-size: 32px;
   font-weight: 600;
-  margin-bottom: 40px;
   color: #000;
 }
 
-
+/* כפתורים זה לצד זה */
 .role-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  justify-content: center;
 }
 
 .btn-role {
@@ -79,6 +79,4 @@
 .logo-bottom {
   width: 130px;
   height: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
 }
