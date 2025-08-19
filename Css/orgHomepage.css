@@ -56,14 +56,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 15px 0;
+  padding: 12px 0;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .bottom-nav img {
-  width: 24px !important;
-  height: 24px !important;
-  opacity: 0.85;
+  width: 36px;
+  height: 36px;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
+}
+
+.bottom-nav img:hover {
+  transform: scale(1.1);
 }
 
 .bottom-nav a {
