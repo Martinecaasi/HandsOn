@@ -1,31 +1,32 @@
+/* מבנה כללי */
 .mobile-frame.organizer-signup {
   width: 100%;
   max-width: 480px;
-  min-width: 320px;
   min-height: 100vh;
-  background: white;
-  padding: 20px;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
-  overflow-y: auto;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
 }
 
+/* חץ חזרה */
 .back-arrow {
   position: absolute;
   top: 20px;
-  left: 20px;
-  width: 36px;
-  height: 36px;
-  display: flex;
+  left: 16px;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 10;
 }
 
@@ -34,30 +35,31 @@
   height: 20px;
 }
 
+/* כותרת */
 .title {
   font-size: 26px;
   font-weight: 600;
-  color: black;
-  margin: 80px 0 20px;
-  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: -40px; /* מקטין רווח מלמעלה */
 }
 
+/* טופס */
 .signup-form {
   width: 100%;
   max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
 }
 
+/* תמונת פרופיל */
 .profile-upload {
-  position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 10px;
 }
-
 .avatar-wrapper {
   width: 100%;
   height: 100%;
@@ -67,7 +69,6 @@
   background-color: white;
   cursor: pointer;
 }
-
 .avatar-wrapper img {
   width: 100%;
   height: 100%;
@@ -75,8 +76,8 @@
 }
 
 .signup-form input,
-.signup-form select,
-.signup-form textarea {
+.signup-form textarea,
+.signup-form select {
   padding: 12px;
   border: none;
   border-radius: 25px;
@@ -84,13 +85,14 @@
   font-size: 14px;
   font-weight: 600;
   width: 100%;
-  height: 45px;
+  height: 46px;
+  font-family: 'Arial', sans-serif;
 }
 
 .signup-form textarea {
   resize: none;
   min-height: 60px;
-  max-height: 150px;
+  max-height: 140px;
   line-height: 1.4;
 }
 
@@ -102,13 +104,14 @@
   border: none;
   border-radius: 999px;
   color: black;
-  margin-top: 10px;
   width: 160px;
-  height: 45px;
+  height: 46px;
   cursor: pointer;
 }
 
+/* לוגו */
 .logo-bottom {
-  width: 50px;
-  margin: 30px auto 0;
+  width: 60px;
+  height: auto;
+  margin-top: 30px;
 }
