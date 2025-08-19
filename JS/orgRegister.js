@@ -14,7 +14,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const formData = new FormData();
-  formData.append('name', document.getElementById('orgName').value.trim());
+  formData.append('organizationName', document.getElementById('orgName').value.trim());
   formData.append('email', document.getElementById('email').value.trim().toLowerCase());
   formData.append('password', document.getElementById('password').value);
   formData.append('phoneNumber', document.getElementById('phone').value.trim());
