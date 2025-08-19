@@ -35,13 +35,19 @@ form.addEventListener('submit', async (e) => {
       body: formData
     });
 
-    const result = await res.json();
+    const text = await res.text();
+    let result;
 
-    if (!res.ok) {
-      throw new Error(result.message || 'שגיאה כללית בעת רישום הארגון');
+    try {
+      result = JSON.parse(text);
+    } catch {
+      throw new Error(`Server returned non-JSON error: ${text}`);
     }
 
-    // הצלחה — שמירת פרטי המשתמש והפנייה לעמוד הבית
+    if (!res.ok) {
+      throw new Error(result.message || `Error ${res.status}`);
+    }
+
     localStorage.setItem('loggedInUser', JSON.stringify(result.organization));
     window.location.href = '/pages/Organizer/homePage.html';
 
