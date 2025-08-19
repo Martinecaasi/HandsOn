@@ -19,9 +19,20 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  font-size: 26px;
-  color: black;
-  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.back-arrow img {
+  width: 22px;
+  height: 22px;
 }
 
 .organizer-signup {
