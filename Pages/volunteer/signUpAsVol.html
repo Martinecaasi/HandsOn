@@ -17,34 +17,31 @@
       <img src="/Images/arrow.svg" alt="Back Arrow" width="20" height="20" />
     </a>
 
-    <div class="content">
+    <div class="top-section">
+      <div class="profile-upload">
+        <label for="profileImageInput" class="avatar-wrapper">
+          <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
+        </label>
+        <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
+      </div>
       <h1 class="title">Sign Up</h1>
-
-      <form id="registerVolunteerForm" class="signup-form" enctype="multipart/form-data">
-        <div class="profile-upload">
-          <label for="profileImageInput" class="avatar-wrapper">
-            <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
-          </label>
-          <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
-        </div>
-
-        <input type="text" id="fullName" name="fullName" placeholder="Fullname" required />
-        <input type="email" id="email" name="email" placeholder="Email" required />
-        <input type="password" id="password" name="password" placeholder="Password" required />
-        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required />
-        <input type="date" id="birthdate" name="birthdate" required />
-        <textarea id="aboutMe" name="aboutMe" placeholder="About Me..." rows="4" required></textarea>
-
-        <button type="submit">Submit</button>
-      </form>
-
-      <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
     </div>
+
+    <form id="registerVolunteerForm" class="signup-form" enctype="multipart/form-data">
+      <input type="text" id="fullName" name="fullName" placeholder="Fullname" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required />
+      <input type="date" id="birthdate" name="birthdate" required />
+      <textarea id="aboutMe" name="aboutMe" placeholder="About Me..." rows="2" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
 
     <script>
       const input = document.getElementById('profileImageInput');
       const preview = document.getElementById('avatarPreview');
-
       input.addEventListener('change', function () {
         const file = this.files[0];
         if (file) {
@@ -55,15 +52,8 @@
           reader.readAsDataURL(file);
         }
       });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const textarea = document.querySelector(".signup-form textarea");
-        textarea.addEventListener("input", () => {
-          textarea.style.height = "auto";
-          textarea.style.height = textarea.scrollHeight + "px";
-        });
-      });
     </script>
+
   </div>
 </body>
 
