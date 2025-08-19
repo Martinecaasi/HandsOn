@@ -13,7 +13,10 @@
 <body>
   <div class="mobile-frame organizer-signup">
 
-    <a href="signupAs.html" class="back-arrow"><img src="/Images/arrow.svg" alt="Back Arrow"></a>
+    <a href="/pages/signupAs.html" class="back-arrow">
+      <img src="/Images/arrow.svg" alt="Back Arrow">
+    </a>
+
     <h1 class="title">Sign Up</h1>
 
     <form class="signup-form" enctype="multipart/form-data">
@@ -25,7 +28,7 @@
         <input type="file" id="orgImageInput" accept="image/png, image/jpeg" hidden />
       </div>
 
-      <input type="text" id="orgName" name="orgName" placeholder="Organizors’s Name" required />
+      <input type="text" id="orgName" name="orgName" placeholder="Organizer's Name" required />
       <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
       <input type="email" id="email" name="email" placeholder="Email" required />
       <input type="password" id="password" name="password" placeholder="Password" required />
@@ -33,6 +36,7 @@
       <input type="number" id="streetNumber" name="streetNumber" placeholder="Street Number" required />
       <input type="text" id="apartmentNumber" name="apartmentNumber" placeholder="Apartment Number" />
       <input type="text" id="apartmentFloor" name="apartmentFloor" placeholder="Floor" />
+
       <select id="citySelect" name="city" required>
         <option value="">בחר עיר</option>
         <option value="תל אביב">תל אביב</option>
@@ -61,7 +65,7 @@
         <option value="קריית שמונה">קריית שמונה</option>
       </select>
 
-      <textarea placeholder="About The Organization" id="about" name="about" rows="4" required></textarea>
+      <textarea placeholder="About The Organization" id="about" name="about" rows="3" required></textarea>
 
       <button type="submit">Submit</button>
     </form>
@@ -69,7 +73,6 @@
     <img src="/Images/handslogo/black.svg" alt="HandsOn logo" class="logo-bottom" />
 
   </div>
-
 </body>
 
 </html>
