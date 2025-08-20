@@ -7,12 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-<<<<<<< Updated upstream
-
-    const email = document.getElementById('email').value.toLowerCase().trim();
-=======
     const email = document.getElementById('email').value.trim();
->>>>>>> Stashed changes
     const password = document.getElementById('password').value;
 
     // ננסה קודם כמתנדב
