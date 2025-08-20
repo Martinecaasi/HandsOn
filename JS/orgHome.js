@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // בדוק אם יש משתמש מחובר
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  const userRole = localStorage.getItem('userRole');
+
+  if (!loggedInUser || userRole !== 'organizer') {
+    // אם אין משתמש מחובר או שזה לא ארגון, נווט לדף התחברות
+    window.location.href = '/Pages/login.html';
+    return;
+  }
+
+  // הצג את שם הארגון בכותרת (לדוגמה)
+  const organizer = JSON.parse(loggedInUser);
+  const titleElement = document.querySelector('.title');
+  if (organizer.fullName && titleElement) {
+    titleElement.textContent = `Welcome, ${organizer.fullName}! Upcoming Events`;
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     const org = JSON.parse(localStorage.getItem('loggedInUser'));
     const eventsContainer = document.getElementById('eventsContainer');

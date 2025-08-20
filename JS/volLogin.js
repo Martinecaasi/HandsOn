@@ -1,44 +1,57 @@
+import { loginVolunteer } from '../Api/volunteersApi.js';
+import { loginOrganization } from '../Api/organizationsApi.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
-
-  if (!loginForm) {
-    console.error('Element with id="loginForm" not found in the page!');
-    return;
-  }
+  if (!loginForm) return;
 
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+<<<<<<< Updated upstream
 
     const email = document.getElementById('email').value.toLowerCase().trim();
+=======
+    const email = document.getElementById('email').value.trim();
+>>>>>>> Stashed changes
     const password = document.getElementById('password').value;
 
+    // ננסה קודם כמתנדב
     try {
-      const response = await fetch('https://handsonserver-new.onrender.com/api/volunteers/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+      const data = await loginVolunteer({ email, password });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        if (data.volunteer?.fullName) {
-          localStorage.setItem('volunteerName', data.volunteer.fullName);
-        }
-
+      if (data.volunteer?.fullName) {
+        localStorage.setItem('volunteerName', data.volunteer.fullName);
         localStorage.setItem('userRole', 'volunteer');
         localStorage.setItem('loggedInUser', JSON.stringify(data.volunteer));
-
-
-        alert('Login successful!');
+        alert('התחברת בהצלחה כמתנדב!');
         window.location.href = '/pages/volunteer/homePage.html';
+        return;
+      } else if (data.message) {
+        // יש מתנדב כזה אבל הסיסמה או המייל לא נכון
+        alert('יש מתנדב כזה אבל הסיסמה או המייל לא נכון');
+        return;
       }
-      else {
-        alert(data.message || 'Invalid email or password');
+    } catch (volError) {
+      // אם לא קיים מתנדב, ננסה כארגון
+      try {
+        const orgData = await loginOrganization({ email, password });
+
+        if (orgData.organizer?.fullName) {
+          localStorage.setItem('organizerName', orgData.organizer.fullName);
+          localStorage.setItem('userRole', 'organizer');
+          localStorage.setItem('loggedInUser', JSON.stringify(orgData.organizer));
+          alert('התחברת בהצלחה כארגון!');
+          window.location.href = '/pages/organizer/homePage.html';
+          return;
+        } else if (orgData.message) {
+          // יש ארגון כזה אבל הסיסמה או המייל לא נכון
+          alert('יש ארגון כזה אבל הסיסמה או המייל לא נכון');
+          return;
+        }
+      } catch (orgError) {
+        // לא נמצא מתנדב ולא ארגון
+        alert('לא נמצא משתמש עם המייל הזה');
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('An error occurred. Please try again later.');
     }
   });
 });
