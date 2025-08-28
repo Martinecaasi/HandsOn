@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', initCalendar);
 
 async function initCalendar(){
