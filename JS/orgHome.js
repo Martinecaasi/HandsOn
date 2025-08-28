@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // בדיקה אם יש משתמש מחובר והרשאות מתאימות
+  // אימות הרשאות
   const loggedInUser = localStorage.getItem('loggedInUser');
   const userRole = localStorage.getItem('userRole');
 
@@ -9,49 +9,52 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const organizer = JSON.parse(loggedInUser);
-  const titleElement = document.querySelector('.title');
+  const titleEl = document.querySelector('.title');
   const eventsContainer = document.getElementById('eventsContainer');
 
-  // הצגת שם הארגון בכותרת
+  // כותרת דו-שורתית: Welcome, <שם>  +  Upcoming Events
   const nameToShow = organizer.fullName || organizer.name || organizer.organizationName || 'Organizer';
-  if (titleElement) {
-    titleElement.textContent = `Welcome, ${nameToShow}! Upcoming Events`;
+  if (titleEl) {
+    titleEl.innerHTML = `
+      <span class="welcome-line">Welcome, ${nameToShow}</span><br>
+      <span class="subtitle-line">Upcoming Events</span>
+    `;
   }
 
-  // בדיקה שיש ID לארגון
   if (!organizer._id) {
-    eventsContainer.innerHTML = "<p>You must be logged in as an organization.</p>";
+    eventsContainer.innerHTML = `<p style="text-align:center;margin-top:40px;">You must be logged in as an organization.</p>`;
     return;
   }
 
-  // שליפת אירועים
   try {
     const res = await fetch('https://handsonserver-new.onrender.com/api/events');
     const allEvents = await res.json();
 
-    const orgEvents = allEvents.filter(event => event.createdBy?._id === organizer._id);
+    // אירועים שנוצרו ע"י הארגון
+    const orgEvents = allEvents.filter(e => e.createdBy?._id === organizer._id);
 
-    if (orgEvents.length === 0) {
+    if (!orgEvents.length) {
       eventsContainer.innerHTML = `
-        <p style="text-align: center; margin-top: 60px; font-size: 18px; color: #888;">
+        <p style="text-align:center;margin-top:40px;color:#777;">
           You haven't created any events yet.
-        </p>
-      `;
-    } else {
-      orgEvents.forEach(event => {
-        const card = document.createElement('div');
-        card.className = 'event-card';
-        card.innerHTML = `
-          <p class="event-name">${event.title}</p>
-          <p><strong>Date:</strong> ${event.date}</p>
-          <p><strong>City:</strong> ${event.city}</p>
-          <p><strong>Participants:</strong> ${event.participants?.length || 0}</p>
-        `;
-        eventsContainer.appendChild(card);
-      });
+        </p>`;
+      return;
     }
+
+    // בניית כרטיסים בסגנון המוקטאפ
+    eventsContainer.innerHTML = ''; // ניקוי
+    orgEvents.forEach(e => {
+      const count = Array.isArray(e.participants) ? e.participants.length : 0;
+      const card = document.createElement('div');
+      card.className = 'event-pill';
+      card.innerHTML = `
+        <p class="event-title">${e.title || 'Untitled Event'}</p>
+        <p class="event-participants">Total Participants: ${count}</p>
+      `;
+      eventsContainer.appendChild(card);
+    });
   } catch (err) {
     console.error('Error fetching events:', err);
-    eventsContainer.innerHTML = "<p>Error loading events.</p>";
+    eventsContainer.innerHTML = "<p style='text-align:center;color:#c00;'>Error loading events.</p>";
   }
 });
