@@ -8,7 +8,7 @@ html, body {
 .mobile-frame.event-page {
   width: 100%;
   max-width: 480px;
-  min-height: 135vh;
+  min-height: 170vh;
   margin: 0 auto;
   background-color: white;
   padding: 20px;
