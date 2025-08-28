@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           localStorage.setItem('userRole', 'organizer');
           localStorage.setItem('loggedInUser', JSON.stringify(orgData.organization));
           alert('התחברת בהצלחה כארגון!');
-          window.location.href = '/pages/organizer/orgHome.html';
+          window.location.href = '/pages/organizer/homePage.html';
           return;
         }
       } catch (orgErr) {
