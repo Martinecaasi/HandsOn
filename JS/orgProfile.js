@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // מילוי פרטי פרופיל בדף
     document.getElementById('nameBox').textContent = organization.organizationName || 'Organization';
-    document.getElementById('specialityBox').textContent = organization.speciality || '-';
     document.getElementById('phoneBox').textContent = organization.phoneNumber || '-';
     document.getElementById('emailBox').textContent = organization.email || '-';
     document.getElementById('aboutBox').textContent = organization.about || 'אין תיאור זמין כרגע.';

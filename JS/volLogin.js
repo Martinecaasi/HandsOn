@@ -11,9 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
+    // בדיקת אדמין קודם
+    if (email === 'admin@admin.com' && password === 'admin123') {
+      localStorage.setItem('userRole', 'admin');
+      localStorage.setItem('loggedInUser', JSON.stringify({ email }));
+      alert('התחברת בהצלחה כאדמין!');
+      window.location.href = '/pages/admin/adminHome.html';
+      return;
+    }
+
     let isLoggedIn = false;
 
-    // ננסה קודם כמתנדב
+    // ננסה כמתנדב
     try {
       const data = await loginVolunteer({ email, password });
 
