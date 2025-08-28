@@ -160,3 +160,48 @@
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+
+/* תיאור עם קיפול/פריסה אלגנטי */
+.event-desc{
+  margin-top: 8px;
+  white-space: pre-line;           /* שומר שורות בתיאור */
+}
+
+/* כפתור "Show more/less" בסגנון לינק עם חץ קטן */
+.toggle-more{
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 6px;
+
+  color: #0a66c2;                  /* כחול לינק */
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.toggle-more::after{
+  content: "▾";                    /* חץ מטה */
+  display: inline-block;
+  transform: translateY(1px);
+  transition: transform .18s ease;
+  opacity: .9;
+}
+.toggle-more[aria-expanded="true"]::after{
+  transform: rotate(180deg) translateY(-1px); /* חץ מעלה במצב פתוח */
+}
+.toggle-more:hover{ text-decoration: underline; }
+.toggle-more:focus-visible{
+  outline: 2px solid #6BB1E4;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* (אופציונלי) פיינטיונינג של הכרטיסים כדי שהכפתור יישב יפה */
+.day-events .event-card { padding-bottom: 14px; }
+.day-events .event-line + .event-desc { margin-top: 6px; }
