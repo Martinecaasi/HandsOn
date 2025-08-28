@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (Array.isArray(events)) {
       events.forEach(event => {
         const dateObj = new Date(event.date);
-        const dateStr = dateObj.toLocaleDateString('en-GB'); // תאריך בפורמט DD/MM/YYYY
+        const dateStr = dateObj.toLocaleDateString('en-GB');
         const timeStr = event.time || dateObj.toLocaleTimeString('en-GB', {
           hour: '2-digit',
           minute: '2-digit'

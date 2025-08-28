@@ -71,6 +71,23 @@
   </footer>
 
   <script src="/JS/volHome.js" type="module"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const profileButton = document.getElementById("profileButton");
+      const userRole = localStorage.getItem("userRole");
+
+      if (profileButton) {
+        if (userRole === "volunteer") {
+          profileButton.href = "/pages/volunteer/volProfile.html";
+        } else if (userRole === "organizer") {
+          profileButton.href = "/pages/organization/orgProfile.html";
+        } else {
+          profileButton.href = "/pages/login.html";
+        }
+      }
+    });
+  </script>
+
 
   <script>
     function toggleFilterMenu() {
