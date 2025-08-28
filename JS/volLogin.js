@@ -42,14 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        if (orgData?.organization?.name) {
-          localStorage.setItem('organizerName', orgData.organization.name);
+        if (orgData?.organization?.organizationName) {
+          localStorage.setItem('organizerName', orgData.organization.organizationName);
           localStorage.setItem('userRole', 'organizer');
           localStorage.setItem('loggedInUser', JSON.stringify(orgData.organization));
           alert('התחברת בהצלחה כארגון!');
           window.location.href = '/pages/organizer/homePage.html';
           return;
         }
+
       } catch (orgErr) {
         console.log('Organization login failed (catch):', orgErr);
         alert('הייתה שגיאה בעת התחברות כארגון');
