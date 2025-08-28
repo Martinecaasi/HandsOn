@@ -20,7 +20,7 @@ body {
   width: 100%;
   max-width: 480px;
   min-width: 320px;
-  min-height: 170vh;
+  min-height: 100vh;
   background:white;
   padding: 20px;
   margin: 0 auto;

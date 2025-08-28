@@ -1,40 +1,46 @@
 import { getAllVolunteers } from "../../Api/volunteersApi.js";
-import { getAllOrganizations} from "../../Api/organizationsApi.js";
+import { getAllOrganizations } from "../../Api/organizationsApi.js";
 
-const tableBody = document.getElementById('eventTableBody');
+const volunteersTBody = document.getElementById('volunteersTableBody');
+const orgsTBody = document.getElementById('orgsTableBody');
 
+document.addEventListener('DOMContentLoaded', loadUsers);
 async function loadUsers() {
   try {
-    const [volunteers, organizations] = await Promise.all([
-      getAllVolunteers(),
-      getAllOrganizations()
-    ]);
+    const volunteers = await getAllVolunteers();
+    const organizations = await getAllOrganizations();
 
-    const allUsers = [
-      ...volunteers.map(user => ({ ...user, role: 'Volunteer' })),
-      ...organizations.map(user => ({ ...user, role: 'Organization' }))
-    ];
-
-    renderUsers(allUsers);
+    renderVolunteers(volunteers);
+    renderOrganizations(organizations);
   } catch (error) {
     console.error('Error loading users:', error);
-    tableBody.innerHTML = '<tr><td colspan="4">Failed to load users</td></tr>';
+    volunteersTBody.innerHTML = '<tr><td colspan="3">Failed to load volunteers</td></tr>';
+    orgsTBody.innerHTML = '<tr><td colspan="3">Failed to load organizations</td></tr>';
   }
 }
 
-function renderUsers(users) {
-  tableBody.innerHTML = ''; 
-
-  users.forEach(user => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${user.user_firstName || ''} ${user.user_lstName || ''}</td>
-      <td>${user.user_email || ''}</td>
-      <td>${user.user_password || ''}</td>
-      <td>${user.role}</td>
+function renderVolunteers(volunteers) {
+  volunteersTBody.innerHTML = '';
+  volunteers.forEach(v => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${v.fullName || ''} ${v.user_lstName || ''}</td>
+      <td>${v.email || ''}</td>
+      <td>${v.password || ''}</td>
     `;
-    tableBody.appendChild(row);
+    volunteersTBody.appendChild(tr);
   });
 }
 
-document.addEventListener('DOMContentLoaded', loadUsers);
+function renderOrganizations(orgs) {
+  orgsTBody.innerHTML = '';
+  orgs.forEach(o => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${o.organizationName || ''} ${o.user_lstName || ''}</td>
+      <td>${o.email || ''}</td>
+      <td>${o.password || ''}</td>
+    `;
+    orgsTBody.appendChild(tr);
+  });
+}
