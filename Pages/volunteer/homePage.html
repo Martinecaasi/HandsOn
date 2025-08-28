@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/navBar.css" />
   <link rel="stylesheet" href="/Css/homePage.css" />
-
 </head>
 
 <body>
@@ -49,7 +48,7 @@
           <p><strong>Title:</strong> Give A Hand, Make A Change</p>
           <p><strong>Date & Time:</strong> Monday, February 24 | 9:00–15:00</p>
           <p><strong>Location:</strong> Zikim Beach, Kibutz Zikim</p>
-          <p class="more"><a href="/pages/volunteer/eventPage.html">click Here For More</p>
+          <p class="more"><a href="/pages/volunteer/eventPage.html">click Here For More</a></p>
         </div>
       </div>
     </div>
@@ -71,7 +70,9 @@
   </footer>
 
   <script src="/JS/volHome.js" type="module"></script>
+
   <script>
+    // מעבר לעמוד פרופיל לפי סוג המשתמש
     document.addEventListener("DOMContentLoaded", () => {
       const profileButton = document.getElementById("profileButton");
       const userRole = localStorage.getItem("userRole");
@@ -86,10 +87,8 @@
         }
       }
     });
-  </script>
 
-
-  <script>
+    // ניהול תפריט פילטר
     function toggleFilterMenu() {
       const menu = document.getElementById("filterMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -106,7 +105,6 @@
       }
     });
   </script>
-
 </body>
 
 </html>
