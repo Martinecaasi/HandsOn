@@ -53,11 +53,16 @@ export async function updateVolunteer(id, updatedData) {
   return res.json();
 }
 
-// מחיקת מתנדב
 export async function deleteVolunteer(id) {
   const res = await fetch(`${API_BASE}/${id}`, {
     method: 'DELETE'
   });
-  if (!res.ok) throw new Error('Failed to delete volunteer');
-  return res.json();
+  if (!res.ok) {
+    throw new Error(`Failed to delete volunteer (status: ${res.status})`);
+  }
+  try {
+    return await res.json();
+  } catch {
+    return {};
+  }
 }
