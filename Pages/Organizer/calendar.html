@@ -13,13 +13,17 @@
 
 <body>
   <div class="mobile-frame">
-    <h1 class="title">Events This month</h1>
-    <div id="calendar"></div>
 
-    <div class="event-box" id="eventBox">
-      <p><strong>On This Date: <span id="selectedDate">-</span></strong></p>
-      <p class="event-text" id="eventText">Select a date to view events.</p>
+    <h1 class="title">Events This month</h1>
+
+    <div class="calendar-wrapper">
+      <div id="calendar" aria-label="Monthly calendar"></div>
     </div>
+
+    <h3 id="selectedDate" class="sr-only" aria-live="polite"></h3>
+
+    <div id="dayEventsPanel" class="day-events" hidden></div>
+
   </div>
 
   <footer class="bottom-nav">
