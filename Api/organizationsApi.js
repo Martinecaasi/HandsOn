@@ -24,9 +24,16 @@ export async function loginOrganization(credentials) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(credentials)
   });
-  if (!res.ok) throw new Error('Login failed');
-  return res.json();
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: true, message: data.message || 'Login failed' };
+  }
+
+  return data;
 }
+
 
 // שליפת כל הארגונים
 export async function getAllOrganizations() {

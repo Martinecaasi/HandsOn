@@ -35,6 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const orgData = await loginOrganization({ email, password });
 
+        console.log('Response from loginOrganization:', orgData);
+
+        if (orgData?.error) {
+          alert(orgData.message || 'הסיסמה או האימייל שגויים עבור ארגון');
+          return;
+        }
+
         if (orgData?.organization?.name) {
           localStorage.setItem('organizerName', orgData.organization.name);
           localStorage.setItem('userRole', 'organizer');
@@ -44,11 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
       } catch (orgErr) {
-        console.log('Organization login failed:', orgErr);
+        console.log('Organization login failed (catch):', orgErr);
+        alert('הייתה שגיאה בעת התחברות כארגון');
       }
     }
-
-    // אם גם מתנדב וגם ארגון נכשלו
-    alert('הסיסמה או האימייל שגויים עבור מתנדב או ארגון');
   });
 });
