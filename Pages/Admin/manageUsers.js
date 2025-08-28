@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!btn) return;
         const id = btn.dataset.id;
         console.log('volunteer id:', id, v);
+        console.log('Clicked delete', id);
+        e.preventDefault(); // גם זה עוזר למנוע רענון
+        e.stopPropagation();
+
         if (!id) return;
 
         if (!confirm('Delete this volunteer?')) return;
@@ -71,7 +75,7 @@ function renderVolunteers(volunteers) {
         return;
     }
     volunteers.forEach(v => {
-        const id = v._id || v.id || v.user_id; 
+        const id = v._id || v.id || v.user_id;
         console.log('volunteer id:', id, v);
         const name = v.fullName || `${v.user_firstName || ''} ${v.user_lstName || ''}`.trim();
         const email = v.email || v.user_email || '';
@@ -83,7 +87,7 @@ function renderVolunteers(volunteers) {
       <td>${email}</td>
       <td>${password}</td>
       <td>
-        <button class="btn-delete" data-id="${id}" aria-label="Delete volunteer">Delete</button>
+       <button type="button" class="btn-delete" data-id="${id}">Delete</button>
       </td>
     `;
         volunteersTBody.appendChild(tr);
