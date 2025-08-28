@@ -1,76 +1,48 @@
-.mobile-frame {
-  max-width: 480px;
-  margin: 0 auto;
-  background: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 20px 100px;
-}
-
+/* כותרת: שתי שורות במרכז, פונט שמן */
 .title {
   text-align: center;
-  padding-top: 100px;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 40px;
+  margin: 24px 0 12px;
+  line-height: 1.15;
+}
+.title .welcome-line {
+  display: inline-block;
+  font-weight: 700;
+  font-size: clamp(22px, 6.4vw, 28px);
+}
+.title .subtitle-line {
+  display: inline-block;
+  font-weight: 800;
+  font-size: clamp(24px, 7vw, 32px);
 }
 
-.event-card {
-  background-color: #DDF2FF;
-  border-radius: 16px;
-  padding: 10px 14px;
-  margin-top: 10px;
-  width: 92%;
-  font-size: 14px;
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: 0.2s ease;
+/* קונטיינר לרשימת האירועים */
+.events-container {
+  width: min(92%, 440px);
+  margin: 0 auto;
 }
 
-.event-card:hover {
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+/* כרטיסים עגולים גדולים בסגנון המוקטאפ */
+.event-pill {
+  background: #AEDDFF;           /* כחול בהיר – קרוב למה בתמונה */
+  border-radius: 28px;           /* פינות עגולות "כדוריות" */
+  padding: 18px 20px;
+  margin: 18px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-.event-card p {
-  margin: 3px 0;
-  font-size: 13px;
-}
-
-
-.event-name,
-.participants {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 8px 0;
+.event-pill .event-title {
+  font-size: clamp(16px, 4.8vw, 18px);
+  font-weight: 800;
   color: #000;
+  margin: 4px 0 10px;
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 480px;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 12px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+.event-pill .event-participants {
+  font-size: clamp(14px, 4.2vw, 16px);
+  font-weight: 800;
+  color: #000;
+  margin: 0;
 }
 
-.bottom-nav img {
-  width: 36px;
-  height: 36px;
-  opacity: 0.9;
-  transition: transform 0.2s ease;
-}
-
-.bottom-nav img:hover {
-  transform: scale(1.1);
-}
-
-.bottom-nav a {
-  padding: 4px;
-}
+/* אם יש לך ניווט תחתון – שמרי מרווח כדי שלא יכסה */
+.events-container { padding-bottom: 80px; }
