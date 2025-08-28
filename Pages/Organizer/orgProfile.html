@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Organizer Profile</title>
   <link rel="stylesheet" href="/Css/style.css" />
   <link rel="stylesheet" href="/Css/profileVol.css" />
+  <script src="/JS/orgProfile.js" type="module" defer></script>
 </head>
 
 <body>
@@ -15,18 +16,15 @@
       <img src="/Images/arrow.svg" alt="Back Arrow">
     </a>
 
-    <img src="/Images/profile.svg" alt="Organizer" class="profile-image" />
+    <img id="profileImage" src="/Images/profile.svg" alt="Organizer" class="profile-image" />
 
-    <div class="name-box">Helping Hands Organization</div>
+    <div id="nameBox" class="name-box">Organization Name</div>
 
-    <div class="info-box"><strong>Speciality:</strong> Community Support</div>
-    <div class="info-box"><strong>Phone Number:</strong> 0509876543</div>
-    <div class="info-box"><strong>Email Address:</strong> info@helpinghands.org</div>
+    <div class="info-box"><strong>Phone Number:</strong> <span id="phoneBox">—</span></div>
+    <div class="info-box"><strong>Email Address:</strong> <span id="emailBox">—</span></div>
 
     <div class="about-title"><strong>About Us</strong></div>
-    <div class="about-box">
-      We are a non-profit organization helping families in need through food packages, clothing drives and weekly community volunteering events. We believe in creating change together.
-    </div>
+    <div id="aboutBox" class="about-box">—</div>
 
     <img src="/Images/handslogo/black.svg" class="logo-bottom" alt="Logo" />
   </div>

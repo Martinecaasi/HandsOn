@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2; /* רקע אפור-בהיר עדין */
-  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2; 
+  font-family: 'Poopins', sans-serif;
 }
 
 .mobile-frame.homepage {
@@ -21,34 +21,6 @@ body {
   justify-content: flex-start;
 }
 
-/* הודעות */
-.notification {
-  position: absolute;
-  top: 50px;
-  right: 25px;
-}
-
-.notification img {
-  cursor: pointer;
-  width: 32px;
-  height: 24px;
-}
-
-.badge {
-  position: absolute;
-  top: -4px;
-  right: -0.5px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  font-size: 10px;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-}
 
 /* לוגו */
 .logo-center {
