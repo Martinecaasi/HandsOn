@@ -9,21 +9,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-    // נקרא לארגון מה־localStorage
-    let organization = JSON.parse(loggedInUser);
+    const organization = JSON.parse(loggedInUser);
 
-    // עדכון פרטי הפרופיל בדף
-    document.querySelector('.name-box').textContent = organization.organizationName || 'Organization';
+    // מילוי פרטי פרופיל בדף
+    document.getElementById('nameBox').textContent = organization.organizationName || 'Organization';
+    document.getElementById('specialityBox').textContent = organization.speciality || '-';
+    document.getElementById('phoneBox').textContent = organization.phoneNumber || '-';
+    document.getElementById('emailBox').textContent = organization.email || '-';
+    document.getElementById('aboutBox').textContent = organization.about || 'אין תיאור זמין כרגע.';
 
-    document.querySelectorAll('.info-box')[0].innerHTML = `<strong>Speciality:</strong> ${organization.speciality || '-'}`;
-    document.querySelectorAll('.info-box')[1].innerHTML = `<strong>Phone Number:</strong> ${organization.phoneNumber || '-'}`;
-    document.querySelectorAll('.info-box')[2].innerHTML = `<strong>Email Address:</strong> ${organization.email || '-'}`;
-
-    document.querySelector('.about-box').textContent = organization.about || 'אין תיאור זמין כרגע.';
-
-    // עדכון תמונת פרופיל אם קיימת
+    // תמונת פרופיל
     if (organization.profileImage) {
-      document.querySelector('.profile-image').src = `https://handsonserver-new.onrender.com/uploads/${organization.profileImage}`;
+      document.getElementById('profileImage').src =
+        `https://handsonserver-new.onrender.com/uploads/${organization.profileImage}`;
     }
 
   } catch (err) {
