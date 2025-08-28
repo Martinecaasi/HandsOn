@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const eventsContainer = document.getElementById('eventsContainer');
 
   // הצגת שם הארגון בכותרת
-  const nameToShow = organizer.fullName || organizer.name || 'Organizer';
+  const nameToShow = organizer.fullName || organizer.name || organizer.organizationName || 'Organizer';
   if (titleElement) {
     titleElement.textContent = `Welcome, ${nameToShow}! Upcoming Events`;
   }
