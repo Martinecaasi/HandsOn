@@ -1,99 +1,72 @@
-:root{
-  --max-width: 480px;
-}
-
-/* מסגרת תואמת לעמוד add-event (אותן פרופורציות) */
-.mobile-frame.profile-page{
-  width: 100%;
-  max-width: var(--max-width);
+.profile-container {
+  background-color: white;
+  max-width: 480px;
   margin: 0 auto;
-  background: #fff;
-  min-height: 120vh;                 /* כמו בעמוד add-event */
+  padding: 20px;
+  min-height: 100vh;
   box-sizing: border-box;
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-
-  padding: clamp(16px, 4vw, 24px) clamp(16px, 4vw, 24px) 32px;
 }
 
-/* חץ חזרה – מבודד לעמוד הזה בלבד */
-.profile-page .back-arrow{
+.back-arrow {
   position: absolute;
-  top: clamp(16px, 4vw, 24px);
-  left: clamp(14px, 4vw, 24px);
-  width: clamp(32px, 8vw, 40px);
-  height: clamp(32px, 8vw, 40px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
   text-decoration: none;
-}
-.profile-page .back-arrow img{
-  width: 100%;
-  height: 100%;
+  color: black;
 }
 
-/* תמונת פרופיל – פרופורציה רגישה למסך */
-.profile-page .profile-image{
-  width: clamp(120px, 34vw, 180px);
-  height: clamp(120px, 34vw, 180px);
+.profile-image {
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 50%;
-  margin-top: clamp(40px, 9vw, 56px);
+  margin-top: 50px;
 }
 
-/* קופסת שם */
-.profile-page .name-box{
-  margin-top: clamp(14px, 3.5vw, 18px);
+.name-box {
+  margin-top: 20px;
   background-color: #D3EDFF;
-  padding: 12px 18px;
-  border-radius: 28px;
-  font-size: clamp(16px, 4.6vw, 18px);
-  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
   text-align: center;
-  width: min(92%, 360px);
 }
 
-/* שורות מידע */
-.profile-page .info-box{
+.info-box {
   background-color: #76BFFF;
-  border-radius: 28px;
-  padding: 12px 18px;
-  width: min(92%, 360px);
-  font-size: clamp(14px, 4.2vw, 16px);
-  margin-top: 12px;
-  line-height: 1.35;
-}
-.profile-page .info-box strong{ display:block; margin-bottom: 4px; }
-
-/* כותרת About */
-.profile-page .about-title{
-  width: min(92%, 360px);
-  margin-top: clamp(18px, 4.5vw, 24px);
-  font-size: clamp(16px, 4.6vw, 18px);
-  font-weight: 800;
+  padding: 12px 20px;
+  border-radius: 30px;
+  margin-top: 15px;
+  width: 80%;
+  font-size: 16px;
 }
 
-/* תיבת About */
-.profile-page .about-box{
+.about-title {
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: flex-start;
+  padding-left: 10%;
+}
+
+.about-box {
   background-color: #76BFFF;
-  border-radius: 22px;
-  padding: 14px 18px;
-  font-size: clamp(14px, 4.2vw, 15px);
-  width: min(92%, 360px);
-  margin-top: 8px;
-  line-height: 1.5;
-  white-space: pre-line; /* שומר שורות */
+  border-radius: 25px;
+  padding: 20px;
+  font-size: 15px;
+  width: 80%;
+  margin-top: 10px;
+  line-height: 1.6;
 }
 
-/* לוגו תחתון */
-.profile-page .logo-bottom{
+.logo-bottom {
   margin-top: auto;
-  width: clamp(36px, 9vw, 56px);
-  height: auto;
-  margin-bottom: clamp(12px, 3vw, 18px);
+  width: 50px;
+  margin-bottom: 15px;
 }
