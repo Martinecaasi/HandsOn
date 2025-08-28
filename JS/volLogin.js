@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
-    // ננסה קודם כמתנדב
+    // ניסיון התחברות כמתנדב
     try {
       const data = await loginVolunteer({ email, password });
 
@@ -21,31 +22,34 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('התחברת בהצלחה כמתנדב!');
         window.location.href = '/pages/volunteer/homePage.html';
         return;
-      } else if (data.message) {
-        // יש מתנדב כזה אבל הסיסמה או המייל לא נכון
-        alert('יש מתנדב כזה אבל הסיסמה או המייל לא נכון');
+      }
+
+      if (data.message) {
+        // המתנדב קיים אבל הסיסמה או המייל לא נכונים
+        alert('הסיסמה או האימייל שגויים עבור מתנדב');
         return;
       }
     } catch (volError) {
-      // אם לא קיים מתנדב, ננסה כארגון
+      // לא הצליח כמתנדב – ננסה כארגון
       try {
         const orgData = await loginOrganization({ email, password });
 
-        if (orgData.organizer?.fullName) {
-          localStorage.setItem('organizerName', orgData.organizer.fullName);
+        if (orgData.organization?.name) {
+          localStorage.setItem('organizerName', orgData.organization.name);
           localStorage.setItem('userRole', 'organizer');
-          localStorage.setItem('loggedInUser', JSON.stringify(orgData.organizer));
+          localStorage.setItem('loggedInUser', JSON.stringify(orgData.organization));
           alert('התחברת בהצלחה כארגון!');
-          window.location.href = '/pages/organizer/homePage.html';
+          window.location.href = '/pages/organizer/orgHome.html';
           return;
-        } else if (orgData.message) {
-          // יש ארגון כזה אבל הסיסמה או המייל לא נכון
-          alert('יש ארגון כזה אבל הסיסמה או המייל לא נכון');
+        }
+
+        if (orgData.message) {
+          alert('הסיסמה או האימייל שגויים עבור ארגון');
           return;
         }
       } catch (orgError) {
-        // לא נמצא מתנדב ולא ארגון
-        alert('לא נמצא משתמש עם המייל הזה');
+        alert('לא נמצא משתמש עם הפרטים שהוזנו');
+        console.error('Login failed for both roles:', orgError);
       }
     }
   });
