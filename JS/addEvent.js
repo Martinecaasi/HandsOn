@@ -1,5 +1,3 @@
-// JS/addEvent.js
-
 const form = document.getElementById('eventForm');
 const org = JSON.parse(localStorage.getItem('loggedInUser'));
 
@@ -14,18 +12,15 @@ form.addEventListener('submit', async (e) => {
   const eventData = {
     title: document.getElementById('title').value,
     date: document.getElementById('date').value,
-    startTime: document.getElementById('startTime').value,
+    time: document.getElementById('startTime').value,
     city: document.getElementById('city').value,
-    streetName: document.getElementById('streetName').value,
-    streetNumber: document.getElementById('streetNumber').value,
-    apartmentNumber: document.getElementById('apartmentNumber').value,
-    apartmentFloor: document.getElementById('apartmentFloor').value,
-    handsNeeded: document.getElementById('handsNeeded').value,
-    category: document.getElementById('category').value,
+    street: document.getElementById('streetName').value,
+    buildingNumber: document.getElementById('streetNumber').value,
     contactPhone: document.getElementById('contactPhone').value,
     contactEmail: document.getElementById('contactEmail').value,
     description: document.getElementById('description').value,
-    createdBy: org._id
+    createdBy: org._id,
+    createdByModel: "Organization"
   };
 
   try {
