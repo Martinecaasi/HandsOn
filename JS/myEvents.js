@@ -15,7 +15,7 @@ function createEventCard(event) {
   const card = document.createElement("div");
   card.classList.add("event-card");
 
-  const start = event.startTime || "09:00";
+  const start = event.time || "09:00";
   const end = event.endTime || "15:00";
 
   card.innerHTML = `
