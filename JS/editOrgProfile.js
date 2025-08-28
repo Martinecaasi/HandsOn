@@ -70,7 +70,7 @@ form.addEventListener('submit', async (e) => {
     localStorage.setItem('loggedInUser', JSON.stringify(updated.organization));
 
     alert('הפרופיל עודכן בהצלחה!');
-    window.location.href = '/pages/Organizer/profileOrg.html'; // עמוד הפרופיל
+    window.location.href = '/pages/Organizer/orgHome.html';
   } catch (err) {
     console.error('שגיאה בעדכון הארגון:', err);
     alert(`אירעה שגיאה: ${err.message}`);
