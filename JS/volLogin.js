@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('userRole', 'admin');
       localStorage.setItem('loggedInUser', JSON.stringify({ email }));
       alert('התחברת בהצלחה כאדמין!');
-      window.location.href = '/pages/admin/adminHome.html';
+      window.location.href = '/Pages/Admin/homepage.html';
       return;
     }
 
