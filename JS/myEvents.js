@@ -38,26 +38,65 @@ function createEventCard(event) {
 }
 
 // טעינת האירועים מהשרת
-window.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  const userRole = localStorage.getItem('userRole');
+
+  if (!loggedInUser || userRole !== 'organizer') {
+    window.location.href = '/Pages/login.html';
+    return;
+  }
+
+  const organizer = JSON.parse(loggedInUser);
+  const titleElement = document.querySelector('.title');
+  const eventsContainer = document.getElementById('eventsContainer');
+
+  const nameToShow = organizer.fullName || organizer.name || organizer.organizationName || 'Organizer';
+  if (titleElement) {
+    titleElement.textContent = `Welcome, ${nameToShow}! Upcoming Events`;
+  }
+
+  if (!organizer._id) {
+    eventsContainer.innerHTML = "<p>You must be logged in as an organization.</p>";
+    return;
+  }
+
   try {
-    const events = await getRegisteredEvents(volunteer._id);
+    const res = await fetch('https://handsonserver-new.onrender.com/api/events');
+    const allEvents = await res.json();
 
-    if (!events || events.length === 0) {
-      const empty = document.createElement("p");
-      empty.textContent = "You haven't created any events yet.";
-      empty.style.textAlign = "center";
-      empty.style.color = "#777";
-      empty.style.marginTop = "20px";
-      container.appendChild(empty);
-      return;
+    const orgEvents = allEvents.filter(event => event.createdBy?._id === organizer._id);
+
+    if (orgEvents.length === 0) {
+      eventsContainer.innerHTML = `
+        <p style="text-align: center; margin-top: 60px; font-size: 18px; color: #888;">
+          You haven't created any events yet.
+        </p>
+      `;
+    } else {
+      orgEvents.forEach(event => {
+        const formattedDate = formatDate(event.date);
+        const card = document.createElement('div');
+        card.className = 'event-card';
+        card.innerHTML = `
+          <p class="event-name">${event.title}</p>
+          <p><strong>Date:</strong> ${formattedDate}</p>
+          <p><strong>City:</strong> ${event.city}</p>
+          <p><strong>Participants:</strong> ${event.participants?.length || 0}</p>
+        `;
+        eventsContainer.appendChild(card);
+      });
     }
-
-    events.forEach(event => {
-      const card = createEventCard(event);
-      container.appendChild(card);
-    });
   } catch (err) {
-    console.error("Error loading events:", err);
-    alert("Failed to load your events.");
+    console.error('Error fetching events:', err);
+    eventsContainer.innerHTML = "<p>Error loading events.</p>";
   }
 });
