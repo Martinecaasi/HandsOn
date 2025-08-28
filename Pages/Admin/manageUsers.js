@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = e.target.closest('.btn-delete');
         if (!btn) return;
         const id = btn.dataset.id;
+        console.log('volunteer id:', id, v);
         if (!id) return;
 
         if (!confirm('Delete this volunteer?')) return;
@@ -70,7 +71,8 @@ function renderVolunteers(volunteers) {
         return;
     }
     volunteers.forEach(v => {
-        const id = v._id || v.id || v.user_id; // גמיש לשמות מזהה שונים
+        const id = v._id || v.id || v.user_id; 
+        console.log('volunteer id:', id, v);
         const name = v.fullName || `${v.user_firstName || ''} ${v.user_lstName || ''}`.trim();
         const email = v.email || v.user_email || '';
         const password = v.password || v.user_password || '';
