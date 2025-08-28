@@ -18,6 +18,8 @@ form.addEventListener('submit', async (e) => {
     city: document.getElementById('city').value,
     streetName: document.getElementById('streetName').value,
     streetNumber: document.getElementById('streetNumber').value,
+    apartmentNumber: document.getElementById('apartmentNumber').value,
+    apartmentFloor: document.getElementById('apartmentFloor').value,
     handsNeeded: document.getElementById('handsNeeded').value,
     category: document.getElementById('category').value,
     contactPhone: document.getElementById('contactPhone').value,
