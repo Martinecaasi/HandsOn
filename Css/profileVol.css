@@ -1,32 +1,38 @@
 .profile-container {
   background-color: white;
-  max-width: 480px;
+  max-width: 600px;   /* הגדלתי את המקסימום כדי שהעמוד ייראה יותר רחב */
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;      /* הגדלתי טיפה את ה-padding */
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .back-arrow {
   position: absolute;
   top: 20px;
-  left: 20px;
-  font-size: 28px;
+  left: 10px;   /* במקום 20px – זה מקרב את החץ יותר לשמאל */
+  font-size: 32px; /* החץ גם יותר גדול */
   text-decoration: none;
   color: black;
 }
 
 .profile-image {
-  width: 220px;
-  height: 220px;
+  width: 250px;   /* הגדלתי את התמונה */
+  height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  margin-top: 50px;
+  margin-top: 60px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .name-box {
