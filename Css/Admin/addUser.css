@@ -1,0 +1,65 @@
+
+.main-content h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #4A7DA3;
+  margin-bottom: 24px;
+}
+
+#userForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#userForm select,
+#userForm input {
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 1.5px solid #6BB1E4;
+  border-radius: 10px;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#userForm select:focus,
+#userForm input:focus {
+  outline: none;
+  border-color: #4A7DA3;
+  box-shadow: 0 0 6px rgba(74, 125, 163, 0.25);
+}
+
+#userForm button {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: #6BB1E4;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#userForm button:hover {
+  background-color: #4A7DA3;
+}
+
+#userForm button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  #userForm select,
+  #userForm input,
+  #userForm button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
