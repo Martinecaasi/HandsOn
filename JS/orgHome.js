@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const nameToShow = organizer.fullName || organizer.name || organizer.organizationName || 'Organizer';
   if (titleElement) {
     titleElement.textContent = `Welcome, ${nameToShow}!`;
-    titleElement.textContent='Upcoming Events'
 
   }
 
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // סינון לפי אירועים שנוצרו ע"י הארגון הנוכחי
     const orgEvents = allEvents.filter(event => event.createdBy?._id === organizer._id);
-
+    titleElement.textContent="Upcoming Events"
     if (orgEvents.length === 0) {
       eventsContainer.innerHTML = `
         <p style="text-align: center; margin-top: 60px; font-size: 18px; color: #888;">
