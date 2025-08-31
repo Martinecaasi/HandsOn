@@ -6,6 +6,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
 const userType = urlParams.get('type');
 
+if (userType !== 'volunteer' && userType !== 'organization') {
+  alert("Invalid user type");
+  window.location.href = '/Pages/Admin/manageUsers.html';
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
   try {
     let user;
@@ -23,23 +28,32 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  try {
-    if (userType === 'volunteer') {
-      await updateVolunteer(userId, { fullName: name, email, password });
-    } else {
-      await updateOrganization(userId, { organizationName: name, email, password });
+    try {
+      const payload = { email };
+
+      if (userType === 'volunteer') {
+        payload.fullName = name;
+        if (password.trim()) payload.password = password;
+        await updateVolunteer(userId, payload);
+      } else {
+        payload.organizationName = name;
+        if (password.trim()) payload.password = password;
+        await updateOrganization(userId, payload);
+      }
+
+      alert("User updated successfully!");
+      window.location.href = '/Pages/Admin/manageUsers.html';
+    } catch (err) {
+      console.error('Error updating user:', err);
+      alert('Failed to update user.');
     }
-    alert("User updated successfully!");
-    window.location.href = '/Pages/Admin/manageUsers.html';
-  } catch (err) {
-    console.error('Error updating user:', err);
-    alert('Failed to update user.');
-  }
-});
+  });
+}
