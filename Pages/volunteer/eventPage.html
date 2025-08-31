@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,70 +8,32 @@
   <link rel="stylesheet" href="/Css/navBar.css" />
   <link rel="stylesheet" href="/Css/eventPage.css" />
 </head>
-
 <body>
   <div class="mobile-frame event-page">
     <a href="/pages/volunteer/homePage.html" class="back-arrow" aria-label="Back">
       <img src="/Images/arrow.svg" alt="Back Arrow" />
     </a>
-    <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-top" />
-    <h1 class="event-title">"Give A Hand, Make A Change"</h1>
+
+    <h1 class="event-title"></h1>
 
     <div class="event-description-box">
-      <p>
-        Join us in making a real impact on our environment! HandsOn invites you to a beach cleanup event
-        where we come together to protect nature and restore the beauty of our coastline.
-      </p>
+      <p class="event-description"></p>
     </div>
 
-    <h2 class="section-title">Why Join?</h2>
-    <ol class="reasons-list">
-      <li>Help keep our beaches clean and protect marine life.</li>
-      <li>Meet like‑minded people who care about the planet.</li>
-      <li>Earn community service hours & feel great about giving back.</li>
-    </ol>
-
-    <h2 class="section-title">What To Bring?</h2>
-    <ol class="bring-list">
-      <li>Comfortable clothes & closed shoes</li>
-      <li>Reusable water bottle</li>
-      <li>Sunscreen & hat</li>
-      <li>Gloves (if you have them, but we’ll provide some too!)</li>
-    </ol>
-
-    <div class="address-box" aria-label="Event address">
-      <strong>Address</strong>
-      <p>Zikim Beach, Kibbutz Zikim</p>
-      <a href="https://waze.com/ul?ll=31.5688,34.5518&navigate=yes" target="_blank" rel="noopener noreferrer"
-        class="waze-link">
-        Open in Waze
-      </a>
-    </div>
+    <div class="event-details"></div>
 
     <div class="event-buttons">
-      <a class="register-btn" href="/Pages/thanksForReg.html">Register</a>
-      <a class="about-btn" href="/Organizer/orgProfileforTheEventPage.html">About Event Manager</a>
+      <button class="register-btn" id="registerBtn">Register</button>
     </div>
-
-      <footer class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-    <a id="profileButton" href="#" aria-label="Profile">
-      <img class="profile-icon" src="/Images/navbar/profile.svg" alt="Profile" />
-    </a>
-    <a href="/pages/volunteer/myEvents.html" aria-label="My Events">
-      <img src="/Images/navbar/calendar.svg" alt="Calendar" />
-    </a>
-    <a href="/pages/volunteer/homePage.html" aria-label="Home">
-      <img src="/Images/navbar/home.svg" alt="Home" />
-    </a>
-    <a href="/pages/volunteer/settingsPage.html" aria-label="Settings">
-      <img src="/Images/navbar/settings.svg" alt="Settings" />
-    </a>
-  </footer>
   </div>
 
+  <footer class="bottom-nav">
+    <a href="/pages/volunteer/profileVol.html"><img src="/Images/navbar/profile.svg" alt="Profile" /></a>
+    <a href="/pages/volunteer/myEvents.html"><img src="/Images/navbar/calendar.svg" alt="Calendar" /></a>
+    <a href="/pages/volunteer/homePage.html"><img src="/Images/navbar/home.svg" alt="Home" /></a>
+    <a href="/pages/volunteer/settingsPage.html"><img src="/Images/navbar/settings.svg" alt="Settings" /></a>
+  </footer>
 
-
-  <script src="/JS/scripts.js" type="module"></script>
+  <script src="/JS/eventPage.js" type="module"></script>
 </body>
-
 </html>
