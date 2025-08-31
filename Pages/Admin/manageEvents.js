@@ -26,7 +26,7 @@ function renderEvents(events) {
       <td>${event.title || ''}</td>
       <td>${event.date || ''} ${event.time || ''}</td>
       <td>${event.city || ''}</td>
-      <td>${event.createdBy._id || ''}</td>
+      <td>${event.createdBy || ''}</td>
       <td><button class="btn-delete" data-id="${event._id}">Delete</button></td>
     `;
         eventsTBody.appendChild(tr);
