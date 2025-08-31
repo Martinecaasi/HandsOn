@@ -5,7 +5,11 @@ export async function testOrganization() {
   const res = await fetch(`${API_BASE}/test`);
   return res.text();
 }
-
+export async function getOrganizationById(orgId) {
+  const res = await fetch(`${API_BASE}/${orgId}`);
+  if (!res.ok) throw new Error('Failed to fetch organization');
+  return res.json();
+}
 // רישום ארגון חדש
 export async function registerOrganization(formData) {
   const res = await fetch(`${API_BASE}/register`, {
