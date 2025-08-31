@@ -1,7 +1,6 @@
-// קובץ editOrgProfile.js
-// לוגיקה לעריכת פרופיל ארגון קיים
 
-const API_URL = "https://your-server.com/api/organizations"; // לשנות לכתובת השרת שלך
+
+const API_URL = "https://handsonserver-new.onrender.com/api/organizations"; // לשנות לכתובת השרת שלך
 const orgId = localStorage.getItem("orgId"); 
 // שומר את ה-id בלוקאל סטורג' אחרי login/register
 
