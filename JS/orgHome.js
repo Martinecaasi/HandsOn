@@ -68,8 +68,39 @@ document.addEventListener('DOMContentLoaded', async () => {
           <p><strong>Time:</strong> ${startTime}–${endTime}</p>
           <p><strong>City:</strong> ${event.city}</p>
           <p><strong>Participants:</strong> ${event.participants?.length || 0}</p>
-        `;
+          <div class="event-actions">
+          <button class="edit-btn" data-id="${event._id}">✏️ Edit</button>
+          <button class="delete-btn" data-id="${event._id}">🗑️ Delete</button>
+          </div>
+          `;
+
         eventsContainer.appendChild(card);
+
+        // האזנה לכפתור מחיקה
+        card.querySelector('.delete-btn').addEventListener('click', async () => {
+          if (confirm("Are you sure you want to delete this event?")) {
+            try {
+              const delRes = await fetch(`https://handsonserver-new.onrender.com/api/events/${event._id}`, {
+                method: 'DELETE'
+              });
+
+              if (delRes.ok) {
+                card.remove(); // הסרה מהמסך
+              } else {
+                alert("Failed to delete event.");
+              }
+            } catch (err) {
+              console.error("Error deleting event:", err);
+              alert("Error deleting event.");
+            }
+          }
+        });
+
+        // האזנה לכפתור עריכה
+        card.querySelector('.edit-btn').addEventListener('click', () => {
+          window.location.href = `/Pages/Organizer/editEvent.html?id=${event._id}`;
+        });
+
       });
     }
   } catch (err) {

@@ -47,7 +47,6 @@ body {
   box-shadow: 0 0 0 3px rgba(17,132,255,.15);
 }
 
-/* האייקונים ליד השדה */
 .filter-container img{
   width: 22px;
   height: 22px;
@@ -137,6 +136,40 @@ body {
 
 .filter-wrapper:hover .filter-menu {
   display: block;
+}
+.event-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background-color: #DDF2FF;
+  color: #004a74;
+}
+
+.delete-btn {
+  background-color: #ffe1e1;
+  color: #820000;
+}
+
+.edit-btn:hover {
+  background-color: #bce7ff;
+}
+
+.delete-btn:hover {
+  background-color: #ffcccc;
 }
 
 /* כותרת אירועים */
