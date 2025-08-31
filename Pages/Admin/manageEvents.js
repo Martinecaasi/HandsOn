@@ -1,4 +1,5 @@
-import { getAllEvents, getOrganizationById } from "../../Api/eventsApi.js";
+import { getAllEvents} from "../../Api/eventsApi.js";
+import { getOrganizationById } from "../../Api/organizationsApi.js";
 
 const eventsTBody = document.getElementById('eventTableBody');
 
