@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // הצגת שם הארגון בכותרת
   const nameToShow = organizer.fullName || organizer.name || organizer.organizationName || 'Organizer';
   if (titleElement) {
-    titleElement.textContent = `Welcome, ${nameToShow}! Upcoming Events`;
+    titleElement.textContent = `Welcome, ${nameToShow}! 
+    <br> Upcoming Events`;
   }
 
   // בדיקה שיש מזהה לארגון
