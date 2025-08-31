@@ -13,34 +13,34 @@
 <body>
   <div class="mobile-frame volunteer-signup">
 
-    <div class="back-arrow">
-      <img src="/Images/arrow.svg" alt="Back Arrow" />
-    </div>                                     
+    <div class="mobile-frame event-page">
+      <a href="/pages/volunteer/homePage.html" class="back-arrow" aria-label="Back">
+        <img src="/Images/arrow.svg" alt="Back Arrow" />
+      </a>
+      <h1 class="title">Edit Profile</h1>
 
-    <h1 class="title">Edit Profile</h1>
+      <form class="signup-form" enctype="multipart/form-data">
+        <div class="profile-upload">
+          <label for="profileImageInput" class="avatar-wrapper">
+            <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
+          </label>
+          <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
+        </div>
 
-    <form class="signup-form" enctype="multipart/form-data">
-      <div class="profile-upload">
-        <label for="profileImageInput" class="avatar-wrapper">
-          <img id="avatarPreview" src="/Images/profile.svg" alt="Profile" />
-        </label>
-        <input type="file" id="profileImageInput" accept="image/png, image/jpeg" hidden />
-      </div>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="date" placeholder="Birthdate" required />
+        <input type="password" placeholder="Current Password" required />
+        <input type="password" placeholder="New Password" required />
+        <textarea placeholder="Update about myself..." rows="4" required></textarea>
 
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="tel" placeholder="Phone Number" required />
-      <input type="date" placeholder="Birthdate" required />
-      <input type="password" placeholder="Current Password" required />
-      <input type="password" placeholder="New Password" required />
-      <textarea placeholder="Update about myself..." rows="4" required></textarea>
+        <button type="submit">Save</button>
+      </form>
 
-      <button type="submit">Save</button>
-    </form>
+      <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
 
-    <img src="/Images/handslogo/black.svg" alt="HandsOn Logo" class="logo-bottom" />
-
-  </div>
+    </div>
 </body>
 
 </html>
