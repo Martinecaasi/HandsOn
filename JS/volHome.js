@@ -1,11 +1,10 @@
-// כל הקוד באנגלית, הערות בעברית
 document.addEventListener('DOMContentLoaded', async () => {
   const eventList = document.querySelector('.event-list');
   const searchInput = document.getElementById('searchInput');
   const API = 'https://handsonserver-new.onrender.com/api/events';
 
-  let allEvents = [];   // רשימת כל האירועים מהשרת (מקור אמת)
-  let debouncer = null; // למניעת יותר מדי רנדרים בזמן הקלדה
+  let allEvents = [];  
+  let debouncer = null;
 
   // פונקציית עזר: פורמט תאריך
   const fmtDate = (iso) => {
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   };
 
-  // פונקציית עזר: יצירת טקסט מיקום בצורה בטוחה
   const buildLocation = (ev) => {
     const city = ev.city || '';
     const street = ev.street || ev.streetName || '';
