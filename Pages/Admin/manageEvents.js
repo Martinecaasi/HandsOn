@@ -1,5 +1,4 @@
-import { getAllEvents} from "../../Api/eventsApi.js";
-import { getOrganizationById } from "../../Api/organizationsApi.js";
+import { getAllEvents, deleteEvent } from "../../Api/eventsApi.js";
 
 const eventsTBody = document.getElementById('eventTableBody');
 
@@ -15,33 +14,36 @@ async function loadEvents() {
   }
 }
 
-async function renderEvents(events) {
+function renderEvents(events) {
   eventsTBody.innerHTML = '';
-
   if (!events || !events.length) {
     eventsTBody.innerHTML = '<tr><td colspan="5">No events found</td></tr>';
     return;
   }
 
-  for (const event of events) {
+  events.forEach(event => {
     const tr = document.createElement('tr');
-    let creatorName = '';
-
-    try {
-      const orgData = await getOrganizationById(event.createdBy);
-      creatorName = orgData.name || orgData.organization_name || 'Organization';
-    } catch (err) {
-      console.error('Error fetching organization:', err);
-      creatorName = 'Unknown';
-    }
-
     tr.innerHTML = `
       <td>${event.title || ''}</td>
       <td>${event.date || ''} ${event.time || ''}</td>
       <td>${event.city || ''}</td>
-      <td>${creatorName}</td>
-      <td><button class="btn-delete" data-id="${event._id}">Delete</button></td>
+      <td>${event.createdBy?.organizationName || 'Unknown'}</td>
+      <td>
+        <button class="btn-edit" onclick="window.location.href='/Pages/Admin/editEvent.html?id=${event._id}'">✏️ Edit</button>
+        <button class="btn-delete" data-id="${event._id}">🗑️ Delete</button>
+      </td>
     `;
     eventsTBody.appendChild(tr);
-  }
+
+    tr.querySelector('.btn-delete').addEventListener('click', async () => {
+      if (confirm('Are you sure you want to delete this event?')) {
+        try {
+          await deleteEvent(event._id);
+          tr.remove();
+        } catch (err) {
+          alert('Failed to delete event.');
+        }
+      }
+    });
+  });
 }

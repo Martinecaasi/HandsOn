@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Event</title>
+  <link rel="stylesheet" href="/Css/Admin/style.css" />
+  <script src="editEvent.js" type="module"></script>
+</head>
+<body>
+  <div class="admin-container">
+    <main class="main-content">
+      <h1>Edit Event</h1>
+      <form id="editEventForm">
+        <input type="text" id="title" placeholder="Event Title" required />
+        <input type="date" id="date" required />
+        <input type="time" id="startTime" required />
+        <input type="text" id="city" placeholder="City" required />
+        <input type="text" id="streetName" placeholder="Street Name" required />
+        <input type="number" id="streetNumber" placeholder="Street Number" required />
+        <input type="tel" id="contactPhone" placeholder="Contact Phone" />
+        <input type="email" id="contactEmail" placeholder="Contact Email" />
+        <textarea id="description" placeholder="Describe the event..." required></textarea>
+        <button type="submit">Update</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
