@@ -4,7 +4,7 @@ import { getOrganizationById, updateOrganization } from "../../Api/organizations
 const form = document.getElementById('editUserForm');
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
-const userType = urlParams.get('type'); // volunteer / organization
+const userType = urlParams.get('type');
 
 window.addEventListener('DOMContentLoaded', async () => {
   try {

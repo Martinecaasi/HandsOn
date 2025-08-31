@@ -7,14 +7,13 @@ const orgsTBody = document.getElementById('orgsTableBody');
 document.addEventListener('DOMContentLoaded', () => {
     loadUsers();
 
-    // האזנת קליקים באמצעות האצלת אירועים (Event Delegation)
     volunteersTBody.addEventListener('click', async (e) => {
         const btn = e.target.closest('.btn-delete');
         if (!btn) return;
         const id = btn.dataset.id;
         console.log('volunteer id:', id, v);
         console.log('Clicked delete', id);
-        e.preventDefault(); // גם זה עוזר למנוע רענון
+        e.preventDefault();
         e.stopPropagation();
 
         if (!id) return;

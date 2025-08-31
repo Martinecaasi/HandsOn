@@ -38,7 +38,6 @@ export async function loginOrganization(credentials) {
   return data;
 }
 
-
 // שליפת כל הארגונים
 export async function getAllOrganizations() {
   const res = await fetch(API_BASE);

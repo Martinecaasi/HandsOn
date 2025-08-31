@@ -32,10 +32,7 @@
 
     <div class="events-section">
       <h2 class="section-title">Upcoming Events</h2>
-
-      <!-- רשימת האירועים תיכנס כאן -->
       <div class="event-list">
-        <!-- דוגמה ידנית – תוחלף מאוחר יותר ב-JS -->
         <div class="event-card">
           <p><strong>Title:</strong> Join Us For A Day Of Giving!</p>
           <p><strong>Date & Time:</strong> Sunday, February 16 | 10:00–16:00</p>
@@ -71,7 +68,6 @@
   <script src="/JS/volHome.js" type="module"></script>
 
   <script>
-    // מעבר לעמוד פרופיל לפי סוג המשתמש
     document.addEventListener("DOMContentLoaded", () => {
       const profileButton = document.getElementById("profileButton");
       const userRole = localStorage.getItem("userRole");
@@ -87,7 +83,6 @@
       }
     });
 
-    // ניהול תפריט פילטר
     function toggleFilterMenu() {
       const menu = document.getElementById("filterMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
