@@ -17,11 +17,10 @@
     <div class="search-bar">
       <span>Your Volunteer Journey Starts Here...</span>
       <div class="filter-container">
+        <input type="text" id="searchInput" placeholder="Search events..." aria-label="Search events" />
         <img src="/Images/search.svg" alt="Search" />
-
         <div class="filter-wrapper">
           <img src="/Images/filter.svg" alt="Filter" onclick="toggleFilterMenu()" />
-
           <div class="filter-menu" id="filterMenu">
             <div onclick="applyFilter('location')">Location</div>
             <div onclick="applyFilter('date')">Date</div>
@@ -30,6 +29,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="events-section">
       <h2 class="section-title">Upcoming Events</h2>
