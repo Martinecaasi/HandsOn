@@ -21,6 +21,45 @@ body {
   justify-content: flex-start;
 }
 
+/* === Search bar === */
+/* עוטף השורה של החיפוש והפילטרים */
+.filter-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* שדה החיפוש עצמו – עגול, נקי וקריא */
+#searchInput{
+  flex: 1;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #BFD8EA;
+  border-radius: 20px;
+  outline: none;
+  background: #fff;
+  font-size: 14px;
+}
+
+#searchInput:focus{
+  border-color: #1184ff;
+  box-shadow: 0 0 0 3px rgba(17,132,255,.15);
+}
+
+/* האייקונים ליד השדה */
+.filter-container img{
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.search-bar span{
+  display: block;
+  margin-bottom: 8px;
+  color: #3a6176;
+  font-weight: 600;
+}
 
 /* לוגו */
 .logo-center {

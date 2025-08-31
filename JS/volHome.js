@@ -1,39 +1,115 @@
+// כל הקוד באנגלית, הערות בעברית
 document.addEventListener('DOMContentLoaded', async () => {
   const eventList = document.querySelector('.event-list');
-  eventList.innerHTML = '';
+  const searchInput = document.getElementById('searchInput');
+  const API = 'https://handsonserver-new.onrender.com/api/events';
 
-  try {
-    const response = await fetch('https://handsonserver-new.onrender.com/api/events');
-    const events = await response.json();
+  let allEvents = [];   // רשימת כל האירועים מהשרת (מקור אמת)
+  let debouncer = null; // למניעת יותר מדי רנדרים בזמן הקלדה
 
-    if (Array.isArray(events)) {
-      events.forEach(event => {
-        const dateObj = new Date(event.date);
-        const dateStr = dateObj.toLocaleDateString('en-GB');
-        const timeStr = event.time || dateObj.toLocaleTimeString('en-GB', {
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-
-        const card = document.createElement('div');
-        card.className = 'event-card';
-
-        card.innerHTML = `
-          <p><strong>Title:</strong> ${event.title}</p>
-          <p><strong>Date & Time:</strong> ${dateStr} | ${timeStr}</p>
-          <p><strong>Location:</strong> ${event.street}, ${event.city}</p>
-          <p class="more">
-            <a href="/pages/volunteer/eventPage.html?id=${event._id}">click Here For More</a>
-          </p>
-        `;
-
-        eventList.appendChild(card);
-      });
-    } else {
-      eventList.innerHTML = '<p>No events found.</p>';
+  // פונקציית עזר: פורמט תאריך
+  const fmtDate = (iso) => {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-GB');
+    } catch {
+      return '';
     }
-  } catch (error) {
-    console.error('Error fetching events:', error);
+  };
+
+  // פונקציית עזר: יצירת טקסט מיקום בצורה בטוחה
+  const buildLocation = (ev) => {
+    const city = ev.city || '';
+    const street = ev.street || ev.streetName || '';
+    const num = ev.buildingNumber || ev.streetNumber || '';
+    const streetFull = [street, num].filter(Boolean).join(' ');
+    return [city, streetFull].filter(Boolean).join(', ');
+  };
+
+  // רינדור כרטיסים לרשימה
+  const renderEvents = (events) => {
+    eventList.innerHTML = '';
+
+    if (!events || events.length === 0) {
+      eventList.innerHTML = '<p>No matching events found.</p>';
+      return;
+    }
+
+    events.forEach(ev => {
+      const dateStr = fmtDate(ev.date);
+      const timeStr = ev.time || '';
+      const locStr  = buildLocation(ev);
+
+      const card = document.createElement('div');
+      card.className = 'event-card';
+      card.innerHTML = `
+        <p><strong>Title:</strong> ${ev.title || ''}</p>
+        <p><strong>Date & Time:</strong> ${dateStr}${timeStr ? ' | ' + timeStr : ''}</p>
+        <p><strong>Location:</strong> ${locStr}</p>
+        <p class="more">
+          <a href="/pages/volunteer/eventPage.html?id=${ev._id}">click Here For More</a>
+        </p>
+      `;
+      eventList.appendChild(card);
+    });
+  };
+
+  // סינון לפי שאילתה חופשית (כותרת/עיר/רחוב/תיאור/תאריך)
+  const applySearch = () => {
+    const q = (searchInput?.value || '').trim().toLowerCase();
+
+    if (!q) {
+      renderEvents(allEvents);
+      return;
+    }
+
+    const filtered = allEvents.filter(ev => {
+      const haystack = [
+        ev.title,
+        ev.city,
+        ev.street,
+        ev.streetName,
+        ev.description,
+        fmtDate(ev.date)
+      ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+
+      return haystack.includes(q);
+    });
+
+    renderEvents(filtered);
+  };
+
+  // שליפת אירועים מהשרת + רינדור ראשוני
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      eventList.innerHTML = '<p>No events found.</p>';
+      return;
+    }
+
+    allEvents = data;
+    renderEvents(allEvents);
+  } catch (err) {
+    console.error('Error fetching events:', err);
     eventList.innerHTML = '<p>There was an error loading events.</p>';
+  }
+
+  // חיפוש בזמן אמת עם debounce עדין
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debouncer);
+      debouncer = setTimeout(applySearch, 120);
+    });
+  }
+
+  // לחיצה על אייקון החיפוש → פוקוס לשדה
+  const searchIcon = document.querySelector('.filter-container img[alt="Search"]');
+  if (searchIcon && searchInput) {
+    searchIcon.addEventListener('click', () => searchInput.focus());
   }
 });
