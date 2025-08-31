@@ -1,5 +1,5 @@
-import { createVolunteer } from "../../Api/volunteersApi.js";
-import { createOrganization } from "../../Api/organizationsApi.js";
+import { registerVolunteer } from "../../Api/volunteersApi.js";
+import { registerOrganization } from "../../Api/organizationsApi.js";
 
 const form = document.getElementById('userForm');
 
@@ -13,9 +13,9 @@ form.addEventListener('submit', async (e) => {
 
   try {
     if (userType === 'volunteer') {
-      await createVolunteer({ fullName: name, email, password });
+      await registerVolunteer({ fullName: name, email, password });
     } else if (userType === 'organization') {
-      await createOrganization({ organizationName: name, email, password });
+      await registerOrganization({ organizationName: name, email, password });
     }
 
     alert("User added successfully!");
