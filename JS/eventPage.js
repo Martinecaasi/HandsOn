@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    // שליפת אירוע
+    // שליפת פרטי אירוע בלבד (GET)
     const response = await fetch(`https://handsonserver-new.onrender.com/api/events/${eventId}`);
     const event = await response.json();
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      const res = await fetch(`https://handsonserver-new.onrender.com/api/events/${eventId}/register`, {
+      const res = await fetch(`https://handsonserver-new.onrender.com/api/events/${eventId}/join`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ volunteerId: loggedInUser._id })
