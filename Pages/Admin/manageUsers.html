@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Users</title>
+  <link rel="stylesheet" href="/Css/Admin/style.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <div class="profile-icon"><img src="/Images/navbar/profile.svg" alt="Profile" /></div>
+      <ul class="menu">
+        <li><a href="/Pages/Admin/homepage.html">Stats</a></li>
+        <li><a href="/Pages/Admin/manageEvents.html">Manage Events</a></li>
+        <li class="active"><a href="/Pages/Admin/manageUsers.html">Users & Organizations</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Manage Users</h1>
+      <a href="/Pages/Admin/addUser.html" class="btn-add">➕ Add User</a>
+
+      <h2>Volunteers</h2>
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="volunteersTableBody"></tbody>
+      </table>
+
+      <h2>Organizations</h2>
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th>Organization</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orgsTableBody"></tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="manageUsers.js" type="module"></script>
+</body>
+</html>
