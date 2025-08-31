@@ -141,3 +141,50 @@ body {
   text-align: right;
   font-weight: 600;
 }
+
+/* כותרת משנה מתחת ל-Welcome */
+.subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #222;
+}
+
+/* מכולת האירועים */
+.events-container {
+  margin-top: 6px;
+  padding: 10px 12px 90px; /* מקום לניווט התחתון */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* כרטיס אירוע */
+.event-card {
+  background: #D3EDFF;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-size: 15px;
+}
+
+.event-card .event-name {
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.event-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4px;
+}
+
+.event-empty {
+  text-align: center;
+  color: #888;
+  margin-top: 16px;
+  font-size: 16px;
+}
