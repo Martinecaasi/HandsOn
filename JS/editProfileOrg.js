@@ -1,13 +1,14 @@
+// קובץ: /JS/editOrgProfile.js
+// טוען את פרטי הארגון, ממלא את הטופס, מציג תצוגת תמונה, ושולח עדכון רק על מה שהשתנה.
 
-const form = document.getElementById('editOrgForm');
+const form = document.getElementById('editOrganizerForm');
 const imageInput = document.getElementById('orgImageInput');
 const imagePreview = document.getElementById('orgAvatarPreview');
-const citySelect = document.getElementById('citySelect');
+const removeImageCheckbox = document.getElementById('removeImage');
 
-// שמירת מצב מקורי להשוואה – נשלח לשרת רק מה שהשתנה
-let original = null;
+let original = null; // שמירת מצב מקורי להשוואות
 
-// עזרי גישה/כתיבה לשדות
+// עזרי גישה
 const getVal = (id) => document.getElementById(id)?.value ?? '';
 const setVal = (id, v) => {
   const el = document.getElementById(id);
@@ -15,33 +16,21 @@ const setVal = (id, v) => {
   el.value = v ?? '';
 };
 
-// --- טעינת ערים (אם יש לך API פעיל) ---
-async function loadCities() {
-  try {
-    const res = await fetch('https://handsonserver-new.onrender.com/api/cities');
-    if (!res.ok) return;
-    const cities = await res.json();
-    // נקה אפשרויות קיימות (חוץ מהברירת מחדל)
-    citySelect.querySelectorAll('option:not(:first-child)').forEach(o => o.remove());
-    cities.forEach(c => {
-      const name = c?.name ?? c;
-      const opt = document.createElement('option');
-      opt.value = name;
-      opt.textContent = name;
-      citySelect.appendChild(opt);
-    });
-  } catch (e) {
-    console.warn('טעינת ערים נכשלה, ממשיכים בלי:', e);
+// תצוגה מקדימה לתמונה חדשה
+imageInput.addEventListener('change', (e) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    removeImageCheckbox.checked = false; // אם בחרו חדשה—בטל "הסר תמונה"
+    imagePreview.src = URL.createObjectURL(file);
   }
-}
+});
 
-// --- טעינת הארגון מה־localStorage וריענון מהשרת ---
+// טעינת פרטי הארגון (מ-localStorage, ורענון מהשרת אם אפשר)
 async function loadOrganization() {
   const cachedStr = localStorage.getItem('loggedInUser');
   if (!cachedStr) {
-    alert('לא נמצא ארגון מחובר. אנא התחברי שוב.');
-    window.location.href = '/Pages/login.html';
-    return;
+    alert('לא נמצא ארגון מחובר. אנא התחברי מחדש.');
+    return (window.location.href = '/Pages/login.html');
   }
 
   let org;
@@ -49,12 +38,11 @@ async function loadOrganization() {
 
   const orgId = org?._id || org?.id;
   if (!orgId) {
-    alert('פרטי משתמש שגויים. התחברי מחדש.');
-    window.location.href = '/Pages/login.html';
-    return;
+    alert('מבנה משתמש לא תקין. התחברי מחדש.');
+    return (window.location.href = '/Pages/login.html');
   }
 
-  // נסה לרענן מהשרת (עדכני יותר)
+  // ריענון מהשרת (אם יש endpoint כזה)
   try {
     const res = await fetch(`https://handsonserver-new.onrender.com/api/organizations/${orgId}`);
     if (res.ok) {
@@ -63,55 +51,40 @@ async function loadOrganization() {
       localStorage.setItem('loggedInUser', JSON.stringify(org));
     }
   } catch (e) {
-    console.warn('רענון מהשרת נכשל, משתמשים במידע המקומי:', e);
+    console.warn('נכשל לרענן מהשרת, משתמשים ב-cache:', e);
   }
 
-  // בוני "מקור" להשוואה (התאמה לשמות השדות שלך)
+  // ממפים לשמות השדות בטופס (orgName בצד לקוח -> organizationName בצד שרת)
   original = {
-    organizationName: org.organizationName || org.name || '',
-    speciality: org.speciality || '',
-    phoneNumber: org.phoneNumber || '',
+    orgName: org.organizationName || org.name || '',
+    phone: org.phoneNumber || '',
     email: org.email || '',
-    handsNeeded: Number(org.handsNeeded ?? '') || '',
     streetName: org.streetName || '',
     streetNumber: org.streetNumber ?? '',
     apartmentNumber: org.apartmentNumber || '',
     apartmentFloor: org.apartmentFloor || '',
     city: org.city || '',
-    about: org.about || org.aboutOrg || '',
+    about: org.about || '',
     profileImageUrl: org.profileImageUrl || org.profileImage || ''
   };
 
-  // מלאי את השדות בטופס לפי ה־HTML שסיפקת
-  setVal('orgName', original.organizationName);
-  setVal('speciality', original.speciality);
-  setVal('phone', original.phoneNumber);
+  // מילוי טופס
+  setVal('orgName', original.orgName);
+  setVal('phone', original.phone);
   setVal('email', original.email);
-  setVal('handsNeeded', original.handsNeeded);
   setVal('streetName', original.streetName);
   setVal('streetNumber', original.streetNumber);
   setVal('apartmentNumber', original.apartmentNumber);
   setVal('apartmentFloor', original.apartmentFloor);
-
-  await loadCities();
   setVal('citySelect', original.city);
-
-  setVal('aboutOrg', original.about);
+  setVal('about', original.about);
 
   if (original.profileImageUrl) {
     imagePreview.src = original.profileImageUrl;
   }
 }
 
-// --- תצוגה מקדימה לתמונה חדשה ---
-imageInput.addEventListener('change', (e) => {
-  const file = e.target.files?.[0];
-  if (file) {
-    imagePreview.src = URL.createObjectURL(file);
-  }
-});
-
-// --- שליחת עדכון ---
+// שליחת עדכון (PUT multipart) – רק שדות שהשתנו
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!original) return;
@@ -120,57 +93,77 @@ form.addEventListener('submit', async (e) => {
   const orgId = cached._id || cached.id;
   if (!orgId) {
     alert('אין מזהה ארגון. התחברי מחדש.');
-    window.location.href = '/Pages/login.html';
-    return;
+    return (window.location.href = '/Pages/login.html');
   }
 
-  // ערכים נוכחיים מהטופס
+  // ערכים נוכחיים
   const current = {
-    organizationName: getVal('orgName').trim(),
-    speciality: getVal('speciality').trim(),
-    phoneNumber: getVal('phone').trim(),
+    orgName: getVal('orgName').trim(),
+    phone: getVal('phone').trim(),
     email: getVal('email').trim().toLowerCase(),
-    handsNeeded: getVal('handsNeeded') ? Number(getVal('handsNeeded')) : '',
     streetName: getVal('streetName').trim(),
     streetNumber: getVal('streetNumber') ? Number(getVal('streetNumber')) : '',
     apartmentNumber: getVal('apartmentNumber').trim(),
     apartmentFloor: getVal('apartmentFloor').trim(),
-    city: citySelect?.value || '',
-    about: getVal('aboutOrg').trim()
+    city: document.getElementById('citySelect')?.value || '',
+    about: getVal('about').trim()
   };
 
-  // נבנה FormData רק עם מה שהשתנה
-  const formData = new FormData();
-  Object.entries(current).forEach(([key, value]) => {
-    const prev = (original[key] ?? '').toString();
-    const now = (value ?? '').toString();
+  // ולידציה בסיסית (אופציונלי)
+  if (!current.orgName || !current.email) {
+    return alert('שם הארגון ואימייל הם שדות חובה.');
+  }
+
+  // נבנה FormData רק ממה שהשתנה
+  const fd = new FormData();
+
+  // מיפוי שמות שדות: בצד שרת מצופה organizationName + phoneNumber
+  const mapClientToServer = {
+    orgName: 'organizationName',
+    phone: 'phoneNumber',
+    email: 'email',
+    streetName: 'streetName',
+    streetNumber: 'streetNumber',
+    apartmentNumber: 'apartmentNumber',
+    apartmentFloor: 'apartmentFloor',
+    city: 'city',
+    about: 'about'
+  };
+
+  Object.entries(current).forEach(([k, v]) => {
+    const prev = (original[k] ?? '').toString();
+    const now = (v ?? '').toString();
     if (prev !== now) {
-      formData.append(key, value);
+      const serverKey = mapClientToServer[k] || k;
+      fd.append(serverKey, v);
     }
   });
 
-  // תמונה?
+  // תמונה חדשה?
   const hasNewImage = imageInput.files && imageInput.files.length > 0;
   if (hasNewImage) {
-    formData.append('profileImage', imageInput.files[0]); // שם שדה כמו ברישום
+    fd.append('profileImage', imageInput.files[0]);
+  }
+  // הסרת תמונה?
+  if (removeImageCheckbox.checked) {
+    fd.append('removeImage', 'true');
   }
 
-  if ([...formData.keys()].length === 0) {
-    alert('לא בוצעו שינויים.');
-    return;
+  if ([...fd.keys()].length === 0) {
+    return alert('לא בוצעו שינויים.');
   }
 
   try {
     const res = await fetch(`https://handsonserver-new.onrender.com/api/organizations/${orgId}`, {
-      method: 'PUT',           // אם בצד שרת מימשת PATCH – החליפי כאן
-      body: formData
-      // אם יש JWT: headers: { Authorization: `Bearer ${token}` } (אבל לא עם multipart boundary)
+      method: 'PUT',
+      body: fd
+      // אם יש JWT: headers: { Authorization: `Bearer ${token}` }  (לא להגדיר Content-Type ידני)
     });
 
-    const txt = await res.text();
+    const text = await res.text();
     let result;
-    try { result = JSON.parse(txt); }
-    catch { throw new Error(`Server returned non-JSON: ${txt}`); }
+    try { result = JSON.parse(text); }
+    catch { throw new Error(`Server returned non-JSON: ${text}`); }
 
     if (!res.ok) {
       throw new Error(result.message || `Error ${res.status}`);
@@ -179,13 +172,14 @@ form.addEventListener('submit', async (e) => {
     if (result.organization) {
       localStorage.setItem('loggedInUser', JSON.stringify(result.organization));
     }
+
     alert('הפרופיל עודכן בהצלחה!');
     window.location.href = '/Pages/Organizer/orgProfile.html';
   } catch (err) {
-    console.error('שגיאה בעדכון פרופיל:', err);
+    console.error('שגיאה בעדכון הארגון:', err);
     alert(`אירעה שגיאה: ${err.message}`);
   }
 });
 
-// אתחול
+// אתחול העמוד
 loadOrganization();
