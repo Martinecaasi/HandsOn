@@ -1,17 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --bg:#E9F6FF;
+  --primary:#6BB1E4;
+  --primary-700:#4A7DA3;
+  --text:#000000;
+  --white:#ffffff;
+  --border:#cfe6f6;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Poopins', sans-serif; 
-  background-color: #f2f2f2;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  scroll-behavior: smooth;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Poppins",Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg) 0%,#f7fbff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
+
 
 .admin-container{min-height:100vh;display:block}
 .sidebar{
